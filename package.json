@@ -1,24 +1,27 @@
 {
-  "name": "react_starter",
+  "name": "sgt_php",
   "version": "1.0.0",
-  "description": "Starting setup for react redux project",
+  "description": "making a student grade table using ReactJs with Redux, PHP, and MySql",
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Scott Bowler",
+  "author": "Michael Capobianco",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Learning-Fuze/react_starter.git"
+    "url": "https://github.com/MichaelCapo23/sgt_php.git"
   },
   "dependencies": {
+    "materialize-css": "^1.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.1"
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
