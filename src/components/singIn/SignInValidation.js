@@ -25,8 +25,6 @@ let SignInValidation = props => {
                     <button className={"blue darken-2 btn waves-effect waves-light"}>Sign In</button>
                 </div>
             </div>
-
-
         </form>
     )
 };
