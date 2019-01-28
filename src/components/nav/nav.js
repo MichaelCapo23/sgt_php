@@ -15,10 +15,10 @@ class Nav extends Component {
                 text: "Add Student",
                 to: "/addStudent"
             },
-            {
-                text: "Profile",
-                to: "/profile"
-            },
+            // {
+            //     text: "Profile",
+            //     to: "/profile"
+            // },
             {
                 text: "Edit Records",
                 to: "/EditRecords"
@@ -29,6 +29,10 @@ class Nav extends Component {
                 text: "Sign In",
                 to : "/signIn"
             },
+            {
+                text: "Sign Up",
+                to: "/singUp"
+            }
         ],
         links: '',
     };
@@ -53,7 +57,7 @@ class Nav extends Component {
         if(auth) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
-                <li key={"sign-out"} className={"sign-out"}>
+                <li key={"sign-out"} className={"sign-out center"}>
                     <button onClick={this.handleSignOut} className={"btn blue"}>Sign Out</button>
                 </li>
             )
