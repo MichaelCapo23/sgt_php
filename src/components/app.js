@@ -4,12 +4,12 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min'
 import 'material-icons';
 import {Route} from 'react-router-dom';
-import List from '../components/list'
+import List from '../components/list/list'
 import Nav from '../components/nav'
-import SignIn from '../components/singIn'
-import SignUp from '../components/signUp'
-import AddStudent from '../components/addStudent';
-import EditRecords from '../components/editRecords'
+import SignIn from '../components/singIn/singIn'
+import SignUp from '../components/SignUp/signUp'
+import AddStudent from '../components/addStudent/addStudent';
+import EditRecords from '../components/edit/editRecords'
 
 const App = () => (
     <div>
