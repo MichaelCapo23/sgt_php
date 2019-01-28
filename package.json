@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "making a student grade table using ReactJs with Redux, PHP, and MySql",
   "main": "index.js",
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:8080"
+    }
+  },
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
