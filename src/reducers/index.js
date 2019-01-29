@@ -4,7 +4,7 @@ import {signIn} from '../actions/singIn_reducer'
 
 const rootReducer = combineReducers({
     form: formReducer,
-    signIn : signIn,
+    signIn,
 });
 
 export default rootReducer;

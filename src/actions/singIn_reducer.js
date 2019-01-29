@@ -5,9 +5,10 @@ export const signIn = values => dispatch => {
     try {
         axios.get('/api/singIn', values).then((token) => {
             console.log("token: ", token);
-            localStorage.setItem("token", token.data.data);
+            // localStorage.setItem("token", token.data.data);
             dispatch({
-                type: types.SIGN_IN
+                type: types.SIGN_IN,
+                payload: token.data.data
             })
         })
     } catch {

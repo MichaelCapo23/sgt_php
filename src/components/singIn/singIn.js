@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import {Field, Form} from 'redux-form';
 import {connect} from "react-redux"
-import SignInValidation from '../../components/singIn/SignInValidation'
+import SignInValidation from './SignInValidation'
+import {signIn} from "../../actions/singIn_reducer";
 
 class SignIn extends Component {
+
+    componentDidMount = () => {
+        localStorage.setItem("token", this.props.token)
+    }
 
     handleSubmit = (values) => {
         console.log("values: ", values);
@@ -21,9 +26,9 @@ class SignIn extends Component {
     }
 }
 
-function mapStateToProps() {
+function mapStateToProps(store) {
     return {
-
+        token: store.signIn.token
     }
 }
 

@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 import Forms from '../../helpers/forms'
 
 let SignInValidation = props => {
-    const {handleSubmit, submitFunction} = props;
+    const {handleSubmit, submitFunction, clearInputs} = props;
     return (
         <form onSubmit={handleSubmit(submitFunction)}>
             <div className={"row"}>
