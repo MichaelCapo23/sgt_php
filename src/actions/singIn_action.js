@@ -2,10 +2,20 @@ import types from './types';
 import axios from 'axios';
 
 export const signInAction = values => dispatch => {
+    const {email, password} = values;
+    // console.log("values: ", values);
     try {
-        axios.post('/api/singIn', values).then((token) => {
-            console.log("token: ", token);
-            // localStorage.setItem("token", token.data.data);
+        axios({
+            method: "POST",
+            url: '/api/logUserIn.php',
+            data: {
+                email,
+                password,
+                token: localStorage.getItem("token")
+            }
+        }).then((token) => {
+            // console.log("token: ", token);
+            localStorage.setItem("token", token.data.data);
             dispatch({
                 type: types.SIGN_IN,
                 payload: token.data.data

@@ -6,7 +6,8 @@ import get_student_reducer from "../../reducers/get_student_reducer";
 class List extends Component {
 
     componentDidMount = () => {
-        this.props.get_students_action()
+        let token = localStorage.getItem("token");
+        this.props.get_students_action(token)
 
     }
 

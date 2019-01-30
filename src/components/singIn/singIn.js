@@ -11,8 +11,8 @@ class SignIn extends Component {
     }
 
     handleSubmit = async (values) => {
-        console.log("values: ", values);
-        await this.props.signInAction();
+        // console.log("values: ", values);
+        await this.props.signInAction(values);
     }
 
 
