@@ -14,12 +14,18 @@ $getStudentDataQuery = "SELECT *
 $result = mysqli_query($conn, $getStudentDataQuery);
 
 $data = [];
+//$token = $_GET["token"];
+//
+//if(!$token) {
+//    $output['error'] = "token error";
+//    print(json_encode($output));
+//}
 
-while($row = mysqli_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
     $data = $row;
-    if($result) {
-        if(mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
+    if ($result) {
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $data[] = $row;
             }
             $output['success'] = true;
