@@ -50,7 +50,7 @@ class Nav extends Component {
     };
 
     getLinksInMenu = () => {
-        let auth = true;
+        let auth = false;
         const {common, Auth, noAuth} = this.state;
         // const {auth} = this.props;     this will come from the redux state set by redux-form and made into a prop through mapStateToProps
         let links = [...common];

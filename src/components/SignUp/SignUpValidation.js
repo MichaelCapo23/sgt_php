@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 import Forms from '../../helpers/forms'
 
 let SignUpValidation = props => {
-    const {handleSubmit, submitFunction, clearInputs} = props;
+    const {handleSubmit, submitFunction} = props;
     return (
         <form onSubmit={handleSubmit(submitFunction)}>
             <div className="row">
@@ -30,13 +30,35 @@ let SignUpValidation = props => {
                 </div>
 
                 <div className="col s6">
-                    <button className={"blue darken-2 btn waves-effect waves-light"}>Sign In</button>
+                    <button className={"blue darken-2 btn waves-effect waves-light"}>Sign Up</button>
                 </div>
             </div>
         </form>
     )
+};
+
+function validate({username, Email, Password, Confirm}){
+    let errors = {};
+    //changes these with regex later!
+    if(!username) {
+        errors.username = "invalid user name"
+    }
+
+    if(!Email) {
+        errors.Email = "invalid email address"
+    }
+
+    if(!Password) {
+        errors.Password = "Must have at least eight characters, one capital letter, and a number"
+    }
+
+    if(!Confirm) {
+        errors.Confirm = "must match the password above"
+    }
+    return errors;
 }
 
 export default reduxForm({
-    form: "sign-uo-form"
+    form: "sign-up-form",
+    validate,
 })(SignUpValidation)
