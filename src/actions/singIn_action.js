@@ -1,9 +1,9 @@
 import types from './types';
 import axios from 'axios';
 
-export const signIn = values => dispatch => {
+export const signInAction = values => dispatch => {
     try {
-        axios.get('/api/singIn', values).then((token) => {
+        axios.post('/api/singIn', values).then((token) => {
             console.log("token: ", token);
             // localStorage.setItem("token", token.data.data);
             dispatch({

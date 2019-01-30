@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import {Field, Form} from 'redux-form';
 import {connect} from "react-redux"
 import SignInValidation from './SignInValidation'
-import {signIn} from "../../actions/singIn_reducer";
+import {signInAction} from "../../actions/singIn_action";
 
 class SignIn extends Component {
 
     componentDidMount = () => {
-        localStorage.setItem("token", this.props.token)
+        // localStorage.setItem("token", this.props.token)
     }
 
-    handleSubmit = (values) => {
+    handleSubmit = async (values) => {
         console.log("values: ", values);
-        //call the redux action creator for signing in here
+        await this.props.signInAction();
     }
 
 
@@ -28,8 +28,10 @@ class SignIn extends Component {
 
 function mapStateToProps(store) {
     return {
-        token: store.signIn.token
+        // token: store.signIn.token
     }
 }
 
-export default connect(mapStateToProps, {})(SignIn)
+export default connect(mapStateToProps, {
+    signInAction
+})(SignIn)

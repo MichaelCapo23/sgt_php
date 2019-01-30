@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Field, Form} from 'redux-form'
+import {Field, Form ,reduxForm} from 'redux-form'
 import Forms from '../../helpers/forms'
-import {Field, reduxForm} from 'redux-form';
 
 class AddStudent extends  Component {
     render() {

@@ -1,6 +1,14 @@
 import React, {Component, Fragment} from "react";
+import {connect} from 'react-redux'
+import {get_students_action} from '../../actions/get_students_action'
+import get_student_reducer from "../../reducers/get_student_reducer";
 
 class List extends Component {
+
+    componentDidMount = () => {
+        this.props.get_students_action()
+
+    }
 
     makeListContainers = (startingNumber, timesToRun, ArrayToPush) => {
         startingNumber++;
@@ -20,7 +28,7 @@ class List extends Component {
     }
 
     render() {
-
+        console.log("student list: ", this.props.studentList);
         const containers = this.makeListContainers(0, 26, []);
 
         return (
@@ -34,4 +42,12 @@ class List extends Component {
     }
 }
 
-export default List
+function mapStateToProps(state) {
+    return {
+        studentList : state.get_student_reducer.studentList
+    }
+}
+
+export default connect(mapStateToProps, {
+    get_students_action,
+})(List);
