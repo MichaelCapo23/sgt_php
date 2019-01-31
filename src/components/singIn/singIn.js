@@ -11,8 +11,9 @@ class SignIn extends Component {
     }
 
     handleSubmit = async (values) => {
-        // console.log("values: ", values);
         await this.props.signInAction(values);
+        // console.log("token: ", this.props.token);
+        // console.log("auth: ", this.props.auth);
     }
 
 
@@ -28,7 +29,8 @@ class SignIn extends Component {
 
 function mapStateToProps(store) {
     return {
-        // token: store.signIn.token
+        // token: store.signIn.token,
+        // auth: store.signIn.auth,
     }
 }
 

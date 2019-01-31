@@ -7,7 +7,7 @@ class List extends Component {
 
     componentDidMount = () => {
         let token = localStorage.getItem("token");
-        this.props.get_students_action(token)
+        this.props.get_students_action(token);
 
     }
 

@@ -14,11 +14,11 @@ export const signInAction = values => dispatch => {
                 token: localStorage.getItem("token")
             }
         }).then((token) => {
-            // console.log("token: ", token);
-            localStorage.setItem("token", token.data.data);
+            console.log("token: ", token);
+            localStorage.setItem("token", token.data);
             dispatch({
                 type: types.SIGN_IN,
-                payload: token.data.data
+                payload: token.data
             })
         })
     } catch {
