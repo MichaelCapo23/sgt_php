@@ -1,30 +1,30 @@
 import React, {Component} from 'react';
-import {Field, Form ,reduxForm} from 'redux-form'
-import Forms from '../../helpers/forms'
+import {connect} from 'react-redux'
+import AddStudentValidation from "./addStudentValidation"
+import {addStudent_action} from "../../actions/addStudent_action"
 
-class AddStudent extends  Component {
+class AddStudent extends Component {
+
+    handleSubmit = (values) => {
+        this.props.addStudent_action(values);
+    }
+
     render() {
         return(
             <div>
-                <h1 className="center">Add Student</h1>
-                <div className="row">
-                    <Field name={"student_name"} label={"student Name"}/>
-                </div>
-
-                <div className="row">
-                    <Field name={"grade"} label={"grade"}/>
-                </div>
-
-                <div className="row">
-                    <Field name={"student_name"} label={"student Name"}/>
-                </div>
-
-                <div className="row">
-                    <Field name={"student_name"} label={"student Name"}/>
-                </div>
+                <h1 className="center">Add Students!</h1>
+                <AddStudentValidation submitFunction={this.handleSubmit}/>
             </div>
         )
     }
 }
 
-export default AddStudent
+function mapStateToProps(state) {
+    return{
+
+    }
+}
+
+export default connect(mapStateToProps, {
+    addStudent_action
+})(AddStudent);

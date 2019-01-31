@@ -8,7 +8,7 @@ import List from '../components/list/list'
 import Nav from '../components/nav'
 import SignIn from '../components/signIn/signIn'
 import SignUp from '../components/SignUp/signUp'
-import AddStudent from '../components/addStudent/addStudent';
+import AddStudent from '../components/addStudent';
 import EditRecords from '../components/edit/editRecords'
 
 const App = () => (

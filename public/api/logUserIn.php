@@ -33,7 +33,7 @@ $checkForUserQuery->execute();
 $AccountID = null;
 $checkForUserQuery->store_result();
 $checkForUserQuery->bind_result($AccountID);
-print $checkForUserQuery->num_rows;
+//print $checkForUserQuery->num_rows;
 if($checkForUserQuery->num_rows>0){
     while($checkForUserQuery->fetch()){
 //        print "i got here";
