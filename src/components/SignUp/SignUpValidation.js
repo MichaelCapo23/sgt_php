@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import Forms from '../../helpers/forms'
 
-let SignUpValidation = props => {
+const SignUpValidation = props => {
     const {handleSubmit, submitFunction} = props;
     return (
         <form onSubmit={handleSubmit(submitFunction)}>

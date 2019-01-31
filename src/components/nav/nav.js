@@ -17,10 +17,6 @@ class Nav extends Component {
                 text: "Add Student",
                 to: "/addStudent"
             },
-            // {
-            //     text: "Profile",
-            //     to: "/profile"
-            // },
             {
                 text: "Edit Records",
                 to: "/EditRecords"
