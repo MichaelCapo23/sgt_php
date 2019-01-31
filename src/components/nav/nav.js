@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
+import signIn_reducer from "../../reducers/signIn_reducer";
 
 
 class Nav extends Component {
@@ -50,11 +52,11 @@ class Nav extends Component {
     };
 
     getLinksInMenu = () => {
-        let auth = false;
+        console.log("auth: ", this.props.auth);
         const {common, Auth, noAuth} = this.state;
-        // const {auth} = this.props;     this will come from the redux state set by redux-form and made into a prop through mapStateToProps
+        const {auth} = this.props;
         let links = [...common];
-        if(auth) {
+        if(auth || localStorage.getItem("token")) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
                 <li key={"sign-out"} className={"sign-out center"}>
@@ -86,4 +88,10 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+function mapStateToProps(state) {
+    return {
+        auth: state.signIn_reducer.auth
+    }
+}
+
+export default connect(mapStateToProps, {})(Nav);

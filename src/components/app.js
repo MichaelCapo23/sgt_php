@@ -6,7 +6,7 @@ import 'material-icons';
 import {Route} from 'react-router-dom';
 import List from '../components/list/list'
 import Nav from '../components/nav'
-import SignIn from '../components/singIn/singIn'
+import SignIn from '../components/signIn/signIn'
 import SignUp from '../components/SignUp/signUp'
 import AddStudent from '../components/addStudent/addStudent';
 import EditRecords from '../components/edit/editRecords'

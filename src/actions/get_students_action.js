@@ -4,13 +4,12 @@ import axios from 'axios';
 export const get_students_action = (token) => dispatch => {
     try {
         axios({
-            method: 'GET',
+            method: 'POST',
             url: '/api/list_get_students.php',
-            headers: {
-                token: "yooooooooooo"
+            data: {
+                token
             }
         }).then((studentList) => {
-            console.log("studentList: ", studentList);
             dispatch({
                 type: types.GET_STUDENT,
                 payload: studentList.data.data
@@ -22,4 +21,4 @@ export const get_students_action = (token) => dispatch => {
             error: "Get student list error"
         })
     }
-}
+};
