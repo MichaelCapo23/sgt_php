@@ -4,7 +4,7 @@ import SignUpValidation from './SignUpValidation'
 
 class SignUp extends Component {
     componentDidMount = () => {
-        localStorage.setItem("token", this.props.token)
+        // localStorage.setItem("token", this.props.token)
     };
 
     handleSubmit = (values) => {
