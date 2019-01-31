@@ -14,10 +14,14 @@ export const signInAction = values => dispatch => {
                 token: localStorage.getItem("token")
             }
         }).then((token) => {
-            localStorage.setItem("token", token.data.token);
+            console.log("info for endpoint: ", token.data);
+            if(token.data.successLogin) {
+                localStorage.setItem("token", token.data.token);
+            }
             dispatch({
                 type: types.SIGN_IN,
-                payload: token.data
+                payload: token.data,
+                error: "invalid email and/or password"
             })
         })
     } catch {

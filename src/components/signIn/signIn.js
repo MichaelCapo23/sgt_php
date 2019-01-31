@@ -19,39 +19,44 @@ class SignIn extends Component {
 
     handleSubmit = async (values) => {
         await this.props.signInAction(values);
-        // if(this.state)
+        if(this.state.auth) {
+            this.props.history.push("/");
+        }
     };
 
     componentDidUpdate = () => {
         let {auth, error} = this.state;
+        let token = localStorage.getItem("token");
         if(auth !== this.props.auth || error !== this.props.error) {
             this.setState({
                 error: this.props.error,
                 auth: this.props.auth
             })
         }
-        if(this.state.auth) { //might have to change this if it doesnt work consistently
+        if(token) { //might have to change this if it doesnt work consistently
             this.props.history.push("/");
         }
-    }
+    };
 
     render() {
         console.log(this.state.error);
         console.log(this.state.auth);
+        console.log(this.props);
         return(
             <div>
-                <div>{this.state.error ? this.state.error : ""}</div>
                 <h1 className="center">Sign In</h1>
+                <div className={"center red-text"}>{this.state.error ? this.state.error : ""}</div>
                 <SignInValidation submitFunction={this.handleSubmit}/>
             </div>
         )
     }
 }
 
-function mapStateToProps(store) {
+function mapStateToProps(state) {
     return {
-        auth: store.signIn_reducer.auth,
-        error: store.signIn_reducer.error
+        auth: state.signIn_reducer.auth,
+        error: state.signIn_reducer.error,
+        signOutError: state.signIn_reducer.signOutError
     }
 }
 

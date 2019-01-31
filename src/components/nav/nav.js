@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
-import signIn_reducer from "../../reducers/signIn_reducer";
+import {signOutAction} from "../../actions/signOut_action";
 
 
 class Nav extends Component {
@@ -51,12 +51,16 @@ class Nav extends Component {
         )
     };
 
+    handleSignOut = () => {
+        this.props.signOutAction();
+    };
+
     getLinksInMenu = () => {
         console.log("auth: ", this.props.auth);
         const {common, Auth, noAuth} = this.state;
         const {auth} = this.props;
         let links = [...common];
-        if(auth || localStorage.getItem("token")) {
+        if(auth) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
                 <li key={"sign-out"} className={"sign-out center"}>
@@ -66,7 +70,6 @@ class Nav extends Component {
         } else {
             links = [...common, ...noAuth].map(this.buildLinkForNav)
         }
-
         return links
     };
 
@@ -90,8 +93,10 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth: state.signIn_reducer.auth
+        auth: state.signIn_reducer.auth,
     }
 }
 
-export default connect(mapStateToProps, {})(Nav);
+export default connect(mapStateToProps, {
+    signOutAction,
+})(Nav);
