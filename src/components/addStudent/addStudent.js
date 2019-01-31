@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import AddStudentValidation from "./addStudentValidation"
 import {addStudent_action} from "../../actions/addStudent_action"
+import './addStudent.css'
 
 class AddStudent extends Component {
 
