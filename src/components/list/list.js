@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from "react";
 import {connect} from 'react-redux'
 import {get_students_action} from '../../actions/get_students_action'
-import get_student_reducer from "../../reducers/get_student_reducer";
 
 class List extends Component {
 

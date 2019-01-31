@@ -14,8 +14,7 @@ export const signInAction = values => dispatch => {
                 token: localStorage.getItem("token")
             }
         }).then((token) => {
-            console.log("token: ", token);
-            localStorage.setItem("token", token.data);
+            localStorage.setItem("token", token.data.token);
             dispatch({
                 type: types.SIGN_IN,
                 payload: token.data
@@ -27,4 +26,4 @@ export const signInAction = values => dispatch => {
             error: "invalid email and/or password"
         })
     }
-}
+};

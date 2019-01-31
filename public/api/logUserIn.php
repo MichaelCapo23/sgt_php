@@ -26,20 +26,15 @@ $checkForUserQuery = $conn->prepare("SELECT ID
 //
 $checkForUserQuery -> bind_param("ss", $email, $password);
 
-$result = $checkForUserQuery->execute();
-print $result;
+$checkForUserQuery->execute();
 
 $AccountID = null;
 $checkForUserQuery->store_result();
 $checkForUserQuery->bind_result($AccountID);
-print_r($checkForUserQuery);
 if($checkForUserQuery->num_rows>0){
-    $data = [];
-    while($row = $checkForUserQuery->fetch()){
-        $data[] = $row;
-        print_r($data);
+    while($checkForUserQuery->fetch()){
         $output['success'] = true;
-        $output['token'] = $data;
+        $output['token'] = "1234567890";
     }
 } else {
     $output['error'] = "no data";
@@ -48,24 +43,6 @@ if($checkForUserQuery->num_rows>0){
 print(json_encode($output));
 
 
-//while($row = mysqli_fetch_assoc($result)) {
-//    $data = $row;
-//    if($result) {
-//        if(mysqli_num_rows($result) > 0) {
-//            while($row = mysqli_fetch_assoc($result)) {
-//                $data[] = $row;
-//            }
-//            $token = $jwt.encode($username . $password . date("h:i:sa"));
-//            print $token;
-//            $output['success'] = true;
-//            $output['token'] = $token;
-//        } else {
-//            $output['error'] = "no data";
-//        }
-//    } else {
-//        $output['error'] = "error with query";
-//    }
-//}
 
 
 ?>

@@ -8,7 +8,11 @@ export default (state = DEFAULT_STATE, action)=> {
     switch(action.type) {
         case types.SIGN_IN:
         case types.SIGN_UP:
-            return {...state, auth: true, token: action.payload};
+            if(action.payload.success) {
+                return {...state, auth: true, token: action.payload};
+            } else {
+                return {...state, auth: false, token: action.payload};
+            }
         case types.SIGN_IN_ERROR :
             return {...state, auth: false, error: action.error};
         case types.SIGN_OUT:

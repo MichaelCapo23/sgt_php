@@ -16,7 +16,9 @@ $getStudentDataQuery = "SELECT *
 $result = mysqli_query($conn, $getStudentDataQuery);
 
 $data = [];
-//$token = $_GET["token"];
+
+//$jsonToken = file_get_contents("php://input");
+//$token = json_decode($postdata, true);
 //
 //if(!$token) {
 //    $output['error'] = "token error";
