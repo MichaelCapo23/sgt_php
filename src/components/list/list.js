@@ -4,7 +4,7 @@ import {get_students_action} from '../../actions/get_students_action'
 
 class List extends Component {
     state = {
-        studentList: "",
+        studentList: {},
     }
 
     componentDidMount = async () => {
@@ -25,12 +25,21 @@ class List extends Component {
     };
 
     handleStudentList = async (studentList) => {
-        let name = <td>{studentList.name}</td>;
+        let name = studentList.name;
         let GPA = await this.getGPA(studentList);
-        GPA = <td>{GPA}</td>;
-        let year = <td>{studentList.year}</td>;
-        let age = <td>{studentList.age}</td> ;
-
+        let year = studentList.year;
+        let age = studentList.age;
+        let insertTable = studentList.name.charAt("0").toUpperCase();
+        let row = document.getElementById(insertTable);
+        console.log(row);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+        cell1.innerHTML = name;
+        cell2.innerHTML = GPA;
+        cell3.innerHTML = year;
+        cell4.innerHTML = age;
     };
 
     componentDidUpdate = () => {
@@ -40,8 +49,7 @@ class List extends Component {
     makeListContainers = (startingNumber, timesToRun, ArrayToPush) => {
         startingNumber++;
         let newItem = (
-            <table key={String.fromCharCode(65 + startingNumber - 1)}
-                   className={"collection z-depth-1 col s12 m6 l6 xl4"}>
+            <table key={String.fromCharCode(65 + startingNumber - 1)} className={"collection z-depth-1 col s12 m6 l6 xl4"}>
                 <caption>{String.fromCharCode(65 + startingNumber - 1)}</caption>
                 <thead className="collection-item">
                 <tr>
@@ -52,11 +60,7 @@ class List extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr id={String.fromCharCode(65 + startingNumber - 1)}>
                 </tr>
                 </tbody>
             </table>
