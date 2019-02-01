@@ -16,14 +16,14 @@ $getStudentDataQuery = "SELECT *
 $result = mysqli_query($conn, $getStudentDataQuery);
 
 $studentListData = [];
-$count = 0;
+$count = 1;
 
 while ($row = mysqli_fetch_assoc($result)) {
     $studentListData = $row;
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $studentListData[$count] = $row;
+                $studentListData[] = $row;
                 $count++;
             }
 //            $outputList['success'] = true;
@@ -37,50 +37,61 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 //print(json_encode($outputList));
 
-$ID = $outputList['studentData'][0]['ID'];
-print_r($outputList['studentData'][0]);
+$ID = $outputList['studentData']['ID'];
 
 $arrayOfIDs = [];
 
 
-for($index = 0; $index <= $count; $index++) {
+for($index = 0; $index < $count-1; $index++) {
     $arrayOfIDs[$index] = $outputList['studentData'][$index]['ID'];
 }
-
-print_r($arrayOfIDs);
+array_unshift($arrayOfIDs , $ID);
+array_pop($arrayOfIDs);
+//print_r($arrayOfIDs);
+$keys = array_values($arrayOfIDs);
+print_r($keys);
 
 
 $getClassInfoQuery = "SELECT *
-                      FROM `student_classes`
-                      WHERE student_id = $ID";
+                      FROM student_classes
+                      WHERE student_id IN ?";
 
-$ClassResults = mysqli_query($conn, $getClassInfoQuery);
 
-$classOutput = [
-    'success' => false,
-    'data' => "",
-];
-$studentClassData = [];
+$checkForUserQuery -> bind_param("ss", $getClassInfoQuery, $keys);
 
-while ($classRow = mysqli_fetch_assoc($ClassResults)) {
-    $studentClassData = $classRow;
-    if ($ClassResults) {
-        if (mysqli_num_rows($ClassResults) > 0) {
-            while ($classRow = mysqli_fetch_assoc($ClassResults)) {
-                $studentClassData[] = $classRow;
-            }
-            $classOutput['success'] = true;
-            $classOutput['studentData'] = $studentListData;
-            $classOutput['classData'] = $studentClassData;
 
-        } else {
-            $classOutput['error'] = 'no data!';
-        }
-    } else {
-        $classOutput['error'] = 'query failed!';
-    }
-}
+$getClassInfoQuery->execute();
+$getClassInfoQuery->store_result();
+print_r($getClassInfoQuery);
 
-print(json_encode($classOutput));
+
+//$ClassResults = mysqli_query($conn, $getClassInfoQuery);
+//
+//$classOutput = [
+//    'success' => false,
+//    'data' => "",
+//];
+//$studentClassData = [];
+//
+//while ($classRow = mysqli_fetch_assoc($ClassResults)) {
+//    $studentClassData = $classRow;
+//    if ($ClassResults) {
+//        if (mysqli_num_rows($ClassResults) > 0) {
+//            while ($classRow = mysqli_fetch_assoc($ClassResults)) {
+//                $studentClassData[] = $classRow;
+//            }
+//            $classOutput['success'] = true;
+//            $classOutput['studentData'] = $studentListData;
+//            $classOutput['classData'] = $studentClassData;
+//
+//        } else {
+//            $classOutput['error'] = 'no data!';
+//        }
+//    } else {
+//        $classOutput['error'] = 'query failed!';
+//    }
+//}
+//
+//print(json_encode($classOutput));
 
 ?>
