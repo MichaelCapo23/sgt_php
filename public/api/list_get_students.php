@@ -6,7 +6,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 //decided to practice procedural
 
-$output = [
+$outputList = [
     'success' => false
 ];
 
@@ -15,33 +15,57 @@ $getStudentDataQuery = "SELECT *
 
 $result = mysqli_query($conn, $getStudentDataQuery);
 
-$data = [];
-
-//$jsonToken = file_get_contents("php://input");
-//$token = json_decode($postdata, true);
-//
-//if(!$token) {
-//    $output['error'] = "token error";
-//    print(json_encode($output));
-//}
+$studentListData = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $data = $row;
+    $studentListData = $row;
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = $row;
+                $studentListData[] = $row;
             }
-            $output['success'] = true;
-            $output['data'] = $data;
+//            $outputList['success'] = true;
+            $outputList['studentData'] = $studentListData;
         } else {
-            $output['error'] = 'no data!';
+            $outputList['error'] = 'no data!';
         }
     } else {
-        $output['error'] = 'query failed!';
+        $outputList['error'] = 'query failed!';
     }
 }
 
-print(json_encode($output));
+$ID = $outputList['studentData']['ID'];
+
+
+$getClassInfoQuery = "SELECT *
+                      FROM `student_classes`
+                      WHERE student_id = $ID";
+
+$ClassResults = mysqli_query($conn, $getClassInfoQuery);
+
+$classOutput = [
+    'success' => false,
+    'data' => "",
+];
+$studentClassData = [];
+
+while ($classRow = mysqli_fetch_assoc($ClassResults)) {
+    $studentClassData = $classRow;
+    if ($ClassResults) {
+        if (mysqli_num_rows($ClassResults) > 0) {
+            while ($classRow = mysqli_fetch_assoc($ClassResults)) {
+                $studentClassData[] = $classRow;
+            }
+            $classOutput['success'] = true;
+            $classOutput['data'] = array_merge($outputList['studentData'],$studentClassData);
+        } else {
+            $classOutput['error'] = 'no data!';
+        }
+    } else {
+        $classOutput['error'] = 'query failed!';
+    }
+}
+
+print(json_encode($classOutput));
 
 ?>
