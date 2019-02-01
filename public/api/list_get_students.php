@@ -16,13 +16,15 @@ $getStudentDataQuery = "SELECT *
 $result = mysqli_query($conn, $getStudentDataQuery);
 
 $studentListData = [];
+$count = 0;
 
 while ($row = mysqli_fetch_assoc($result)) {
     $studentListData = $row;
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $studentListData[] = $row;
+                $studentListData[$count] = $row;
+                $count++;
             }
 //            $outputList['success'] = true;
             $outputList['studentData'] = $studentListData;
@@ -33,8 +35,19 @@ while ($row = mysqli_fetch_assoc($result)) {
         $outputList['error'] = 'query failed!';
     }
 }
+//print(json_encode($outputList));
 
-$ID = $outputList['studentData']['ID'];
+$ID = $outputList['studentData'][0]['ID'];
+print_r($outputList['studentData'][0]);
+
+$arrayOfIDs = [];
+
+
+for($index = 0; $index <= $count; $index++) {
+    $arrayOfIDs[$index] = $outputList['studentData'][$index]['ID'];
+}
+
+print_r($arrayOfIDs);
 
 
 $getClassInfoQuery = "SELECT *
@@ -57,7 +70,9 @@ while ($classRow = mysqli_fetch_assoc($ClassResults)) {
                 $studentClassData[] = $classRow;
             }
             $classOutput['success'] = true;
-            $classOutput['data'] = array_merge($outputList['studentData'],$studentClassData);
+            $classOutput['studentData'] = $studentListData;
+            $classOutput['classData'] = $studentClassData;
+
         } else {
             $classOutput['error'] = 'no data!';
         }
