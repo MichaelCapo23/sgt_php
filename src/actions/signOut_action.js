@@ -5,7 +5,7 @@ export const signOutAction = () => dispatch => {
     try {
         axios({
             method: "POST",
-            url : "/api/signOut_User.php"
+            url : "/api/logUserIn.php"
         }).then((signedOutComfirmation) => {
             localStorage.clear();
             dispatch({

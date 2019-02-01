@@ -55,8 +55,9 @@ class Nav extends Component {
         console.log("auth: ", this.props.auth);
         const {common, Auth, noAuth} = this.state;
         const {auth} = this.props;
+        let token = localStorage.getItem("token");
         let links = [...common];
-        if(auth) {
+        if(auth || token) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
                 <li key={"sign-out"} className={"sign-out center"}>

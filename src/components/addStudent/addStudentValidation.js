@@ -57,15 +57,15 @@ const AddStudentValidation = props => {
                 </div>
 
 
-                {/*<div className="col s10 center">*/}
-                {/*<div className="col s6">*/}
-                {/*<button className={"red darken-2 btn waves-effect waves-light"}>Clear</button>*/}
-                {/*</div>*/}
+                <div className="col s12 m6 l6 lx6 left">
+                    <div className="col s6">
+                        <button className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
+                    </div>
 
-                {/*<div className="col s6">*/}
-                {/*<button className={"blue darken-2 btn waves-effect waves-light"}>Add Student</button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
+                    <div className="col s6">
+                        <button className={"blue pulse darken-2 btn waves-effect waves-light"}>Add Student</button>
+                    </div>
+                </div>
             </form>
         </div>
     )
