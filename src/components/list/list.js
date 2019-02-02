@@ -46,11 +46,10 @@ class List extends Component {
         this.handleStudentList(this.props.studentList);
     };
 
-    makeListContainers = (startingNumber, timesToRun, ArrayToPush) => {
-        startingNumber++;
-        let newItem = (
-            <table key={String.fromCharCode(65 + startingNumber - 1)} className={"collection z-depth-1 col s12 m6 l6 xl4"}>
-                <caption>{String.fromCharCode(65 + startingNumber - 1)}</caption>
+    makeListContainers = () => {
+        return (
+            <table className={"collection z-depth-3 col s12 m12 l12 xl12"}>
+                {/*<caption></caption>*/}
                 <thead className="collection-item">
                 <tr>
                     <th>Name</th>
@@ -60,27 +59,22 @@ class List extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                <tr id={String.fromCharCode(65 + startingNumber - 1)}>
+                <tr id={"tr-to-get"}>
                 </tr>
                 </tbody>
             </table>
         );
-        ArrayToPush.push(newItem);
-        if (startingNumber < timesToRun) {
-            this.makeListContainers(startingNumber, timesToRun, ArrayToPush);
-        }
-        return ArrayToPush;
     }
 
     render() {
         console.log("student list: ", this.props.studentList);
-        const containers = this.makeListContainers(0, 26, []);
+        const table = this.makeListContainers();
         // let token = localStorage.getItem("token");
         return (
             <Fragment>
                 <h2 className="center">Student List</h2>
                 <div className={"row"}>
-                    {containers}
+                    {table}
                 </div>
             </Fragment>
         )

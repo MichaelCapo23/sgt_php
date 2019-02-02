@@ -51,18 +51,21 @@ array_pop($arrayOfIDs);
 $keys = array_values($arrayOfIDs);
 print_r($keys);
 
+$implodedKeys = implode(',', $keys);
+
 
 $getClassInfoQuery = "SELECT *
                       FROM student_classes
-                      WHERE student_id IN ?";
+                      WHERE student_id IN (".$implodedKeys .")";
+
+print($getClassInfoQuery);
 
 
-$checkForUserQuery -> bind_param("ss", $getClassInfoQuery, $keys);
+//$checkForUserQuery -> bind_param("ss", $getClassInfoQuery, $keys);
 
+$result = mysqli_query($conn, $getClassInfoQuery);
 
-$getClassInfoQuery->execute();
-$getClassInfoQuery->store_result();
-print_r($getClassInfoQuery);
+print_r($result);
 
 
 //$ClassResults = mysqli_query($conn, $getClassInfoQuery);
