@@ -65,5 +65,4 @@ if($loggedinQuery->affected_rows>0) {
 
 print(json_encode($output));
 
-
 ?>
