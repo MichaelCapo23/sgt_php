@@ -6,8 +6,9 @@ import './addStudent.css'
 
 class AddStudent extends Component {
 
-    handleSubmit = (values) => {
-        this.props.addStudent_action(values);
+    handleSubmit = ({studentData, classData}) => {
+        debugger;
+        this.props.addStudent_action(studentData, classData);
     }
 
     render() {

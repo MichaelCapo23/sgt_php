@@ -1,7 +1,5 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import Forms from '../../helpers/forms'
 
 let SignInValidation = props => {
@@ -43,5 +41,5 @@ function validate({email, password}) {
 
 export default reduxForm({
     form: 'sing-in-form',
-    validate: validate,
+    validate
 })(SignInValidation)

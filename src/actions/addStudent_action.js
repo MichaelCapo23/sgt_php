@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const addStudent_action = values => dispatch => {
     try {
+        console.log("parameters: ", values);
         axios({
             method: "POST",
             url: "/api/addStudentRecord.php",
