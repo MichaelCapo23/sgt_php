@@ -12,8 +12,11 @@ export const get_students_action = (token) => dispatch => {
         }).then((studentList) => {
             dispatch({
                 type: types.GET_STUDENT,
-                payload: studentList.data.data
+                classData: studentList.data.classData,
+                studentList: studentList.data.studentData
             })
+            console.log("action log:", studentList.data.classData);
+            console.log("action log:", studentList.data.studentList)
         })
     } catch {
         dispatch({

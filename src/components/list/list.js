@@ -5,6 +5,7 @@ import {get_students_action} from '../../actions/get_students_action'
 class List extends Component {
     state = {
         studentList: {},
+        classData: {},
     }
 
     componentDidMount = async () => {
@@ -13,42 +14,45 @@ class List extends Component {
 
     };
 
-    getGPA = (studentList) => {
-        const classArray = [studentList.class1_grade, studentList.class2_grade, studentList.class3_grade, studentList.class4_grade, studentList.class5_grade, studentList.class6_grade,]
+    getGPA = (classData) => {
+        debugger;
+        const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade,]
         let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
         let totalScore = 0;
-        for(var index = 0; index < currentClassGrades.length; index++) {
+        for(let index = 0; index < currentClassGrades.length; index++) {
             totalScore = totalScore += parseFloat(currentClassGrades[index]);
         }
         let average = totalScore / currentClassGrades.length;
-        return average;
+        return average.toFixed(2);
     };
 
-    handleStudentList = async (studentList) => {
-        let name = studentList.name;
-        let GPA = await this.getGPA(studentList);
-        let year = studentList.year;
-        let age = studentList.age;
-        let insertTable = studentList.name.charAt("0").toUpperCase();
-        let row = document.getElementById(insertTable);
-        console.log(row);
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
-        let cell4 = row.insertCell(3);
-        cell1.innerHTML = name;
-        cell2.innerHTML = GPA;
-        cell3.innerHTML = year;
-        cell4.innerHTML = age;
+    handleStudentList = (studentList, classData) => {
+        debugger;
+        for(let student in studentList) {
+            let name = studentList[student].name;
+            let GPA = this.getGPA(classData[student]);
+            let year = studentList[student].year;
+            let age = studentList[student].age;
+            let table = document.getElementById("tr-to-get");
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+            cell1.innerHTML = name;
+            cell2.innerHTML = GPA;
+            cell3.innerHTML = year;
+            cell4.innerHTML = age;
+        }
     };
 
     componentDidUpdate = () => {
-        this.handleStudentList(this.props.studentList);
+        this.handleStudentList(this.props.studentList, this.props.classData);
     };
 
     makeListContainers = () => {
         return (
-            <table className={"collection z-depth-3 col s12 m12 l12 xl12"}>
+            <table id={"tr-to-get"} className={"highlight collection z-depth-3 col s12 m12 l12 xl12"}>
                 {/*<caption></caption>*/}
                 <thead className="collection-item">
                 <tr>
@@ -59,7 +63,7 @@ class List extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                <tr id={"tr-to-get"}>
+                <tr>
                 </tr>
                 </tbody>
             </table>
@@ -83,7 +87,8 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
-        studentList: state.get_student_reducer.studentList
+        studentList: state.get_student_reducer.studentList,
+        classData: state.get_student_reducer.classData
     }
 }
 
