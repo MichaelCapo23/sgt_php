@@ -32,18 +32,12 @@ if ($result) {
 } else {
     $outputList['error'] = 'query failed!';
 }
-//print(json_encode($outputList));
-
-//$ID = $outputList['studentData']['ID'];
 
 $arrayOfIDs = [];
-
 
 for ($index = 0; $index < $count - 1; $index++) {
     $arrayOfIDs[$index] = $outputList['studentData'][$index]['ID'];
 }
-
-
 
 $implodedKeys = implode(',', $arrayOfIDs);
 
@@ -51,15 +45,7 @@ $getClassInfoQuery = "SELECT *
                       FROM student_classes
                       WHERE student_id IN (" . $implodedKeys . ") ORDER BY `student_id` ASC";
 
-//print($getClassInfoQuery);
-
-
-//$checkForUserQuery -> bind_param("ss", $getClassInfoQuery, $keys);
-
 $result = mysqli_query($conn, $getClassInfoQuery);
-
-//print_r($result);
-
 
 $ClassResults = mysqli_query($conn, $getClassInfoQuery);
 
@@ -69,8 +55,6 @@ $classOutput = [
 ];
 $studentClassData = [];
 
-//while ($classRow = mysqli_fetch_assoc($result)) {
-//    $studentClassData = $classRow;
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
         while ($classRow = mysqli_fetch_assoc($result)) {
@@ -79,14 +63,13 @@ if ($result) {
         $classOutput['success'] = true;
         $classOutput['studentData'] = $studentListData;
         $classOutput['classData'] = $studentClassData;
-
     } else {
         $classOutput['error'] = 'no data!';
     }
 } else {
     $classOutput['error'] = 'query failed!';
 }
-//}
+
 
 print(json_encode($classOutput));
 
