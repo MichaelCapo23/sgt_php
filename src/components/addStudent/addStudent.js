@@ -6,16 +6,12 @@ import './addStudent.css'
 
 class AddStudent extends Component {
 
-    handleSubmit = ({studentData, classData}) => {
-        debugger;
-        this.props.addStudent_action(studentData, classData);
-    }
 
     render() {
         return(
             <div>
                 <h1 className="center">Add Students!</h1>
-                <AddStudentValidation submitFunction={this.handleSubmit}/>
+                <AddStudentValidation reducer={this.props.addStudent_action}/>
             </div>
         )
     }

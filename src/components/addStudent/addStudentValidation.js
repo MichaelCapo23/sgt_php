@@ -13,6 +13,11 @@ class AddStudentValidation extends Component {
         submitted: false
     };
 
+    callReducer = (values) => {
+        debugger;
+        this.props.reducer(values);
+    };
+
     ClassRows = (event) => {
         if (event) {
             let number = event.target.value;
@@ -46,25 +51,24 @@ class AddStudentValidation extends Component {
     nextStep = () => {
         this.setState({
             classes: true,
-            studentData: "something"
+            studentData: ""
         })
     }
 
     previousInputs = () => {
         this.setState({
             classes: false,
-            classData: "something"
         })
     }
 
     render() {
-        const {handleSubmit, submitFunction} = this.props;
-        const {classes, rows, studentData, classData} = this.state;
+        const {handleSubmit} = this.props;
+        const {classes, rows} = this.state;
         console.log(this.props);
         return (
             <Fragment>
                 <div className="firstInputContainer row center">
-                    <form onSubmit={this.nextStep}>
+                    <form onSubmit={handleSubmit(this.nextStep)}>
                         <div className={`${classes ? "hide" : ""} z-depth-4 Info col s12 center`}>
                             <h5 className="center">Student Information</h5>
                             <div className="col s10 offset-s1">
@@ -116,40 +120,37 @@ class AddStudentValidation extends Component {
 
 
                 <div className={`${classes ? "" : "hide"} z-depth-4 classes row center`}>
-                    {/*<form onSubmit={handleSubmit(submitFunction)}>*/}
-                    <h5 className="center">Enter Classes</h5>
-                    <div className="input-field col s10 offset-s1">
-                        <input onChange={event => this.ClassRows(event)} name={"classes"} id={"classes"}
-                               className={"addInput col s10 offset-s1"} autoComplete={"off"}
-                               type="number" min="1" max="6"/>
-                        <label className={"col offset-s1"} htmlFor={"classes"}>{"Enter number of classes"}</label>
-                    </div>
-                    <div>
-                        {classes ? rows : ""}
-                    </div>
-
-
-                    <div className="col s12 left">
-                        <div className="col s6">
-                            <button type={"button"} onClick={this.previousInputs}
-                                    className={"red darken-2 btn waves-effect waves-light"}>previous
-                            </button>
+                    <form onSubmit={handleSubmit(this.callReducer)}>
+                        <h5 className="center">Enter Classes</h5>
+                        <div className="input-field col s10 offset-s1">
+                            <input onChange={event => this.ClassRows(event)} name={"classes"} id={"classes"}
+                                   className={"addInput col s10 offset-s1"} autoComplete={"off"}
+                                   type="number" min="1" max="6"/>
+                            <label className={"col offset-s1"} htmlFor={"classes"}>{"Enter number of classes"}</label>
+                        </div>
+                        <div>
+                            {classes ? rows : ""}
                         </div>
 
-                        <div className="col s6 right">
-                            <button type={"button"} onClick={submitFunction(studentData, classData)}
-                                    className={"blue pulse darken-2 btn waves-effect waves-light"}>Add Student
-                            </button>
-                            <div className={"extra"}/>
+                        <div className="col s12 left">
+                            <div className="col s6">
+                                <button type={"button"} onClick={this.previousInputs}
+                                        className={"red darken-2 btn waves-effect waves-light"}>previous
+                                </button>
+                            </div>
+
+                            <div className="col s6 right">
+                                <button className={"blue pulse darken-2 btn waves-effect waves-light"}>Add Student
+                                </button>
+                                <div className={"extra"}/>
+                            </div>
                         </div>
-                    </div>
-                    {/*</form>*/}
+                    </form>
                 </div>
             </Fragment>
         )
     }
 }
-
 
 function validate({student_id, name, year, Age, class_1, grade_1, class_2, grade_2, class_3, grade_3, class_4, grade_4, class_5, grade_5, class_6, grade_6}) {
     const error = {};
@@ -161,10 +162,6 @@ function validate({student_id, name, year, Age, class_1, grade_1, class_2, grade
     if (!name) {
         error.name = "Please enter a valid name, at least 4 characters"
     }
-
-    // if (!year) {
-    //     error.year = "Please enter a valid year 1-8"
-    // }
 
     if (!Age) {
         error.Age = "Please enter a valid 1-99"
@@ -218,8 +215,12 @@ function validate({student_id, name, year, Age, class_1, grade_1, class_2, grade
         error.grade_6 = "Please enter a valid grade, 1-100"
     }
 
-    return error;
+    return (
+        error
+    )
+
 }
+
 
 export default reduxForm({
     form: "add_student_form",
