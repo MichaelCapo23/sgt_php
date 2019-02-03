@@ -1,8 +1,7 @@
 import types from './types';
 import axios from 'axios';
 
-export const addStudent_action = (values) => dispatch => {
-    debugger;
+export const addStudent_action = values => dispatch => {
     try {
         console.log("parameters: ", values);
         console.log("reducer");
