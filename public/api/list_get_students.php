@@ -47,7 +47,7 @@ $getClassInfoQuery = "SELECT *
 
 $result = mysqli_query($conn, $getClassInfoQuery);
 
-$ClassResults = mysqli_query($conn, $getClassInfoQuery);
+//$ClassResults = mysqli_query($conn, $getClassInfoQuery);
 
 $classOutput = [
     'success' => false,
