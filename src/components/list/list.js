@@ -9,8 +9,31 @@ class List extends Component {
     }
 
     routeUser = (event) => {
+        event.target.parentElement.removeEventListener("click", this.routeUser);
         let ID = event.target.parentElement.attributes.ID.value;
-        this.props.history.push(`/editPage/${ID}`);
+        let row = document.getElementById(`${ID}`).children;
+        console.log(row);
+
+        const age = row[3].textContent;
+        row[3].remove();
+        document.getElementById(`${ID}`).prepend(document.createElement("input"));
+        row[0].value = studentName;
+
+        const year = row[3].textContent;
+        row[3].remove();
+        document.getElementById(`${ID}`).prepend(document.createElement("input"));
+        row[0].value = year;
+
+        const GPA = row[3].textContent;
+        row[3].remove();
+        document.getElementById(`${ID}`).prepend(document.createElement("input"));
+        row[0].value = GPA;
+
+
+        const studentName = row[3].textContent;
+        row[3].remove();
+        document.getElementById(`${ID}`).prepend(document.createElement("input"));
+        row[0].value = studentName;
     };
 
     componentDidMount = async () => {
@@ -40,6 +63,7 @@ class List extends Component {
             let table = document.getElementById("tr-to-get");
             let row = table.insertRow(-1);
             row.setAttribute("ID", studentList[student].ID);
+            // row.classList.add(`student_id_${studentList[student].ID}`);
             row.addEventListener("click", this.routeUser);
             let cell1 = row.insertCell(0);
             let cell2 = row.insertCell(1);
