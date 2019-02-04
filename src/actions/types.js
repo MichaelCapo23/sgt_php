@@ -7,4 +7,6 @@ export default {
     GET_STUDENT_ERROR : 'get_student_error',
     ADD_STUDENT: "add_student",
     ADD_STUDENT_ERROR: "add_student_error",
+    GET_TEACHER_LIST : "get_teacher_list",
+    GET_TEACHER_LIST_ERROR : "get_teacher_list_error"
 }

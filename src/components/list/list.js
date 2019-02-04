@@ -8,6 +8,11 @@ class List extends Component {
         classData: {},
     }
 
+    routeUser = (event) => {
+        let ID = event.target.parentElement.attributes.ID.value;
+        this.props.history.push(`/editPage/${ID}`);
+    };
+
     componentDidMount = async () => {
         let token = localStorage.getItem("token");
         await this.props.get_students_action(token);
@@ -27,7 +32,6 @@ class List extends Component {
     };
 
     handleStudentList = (studentList, classData) => {
-        debugger;
         for(let student in studentList) {
             let name = studentList[student].name;
             let GPA = this.getGPA(classData[student]);
@@ -35,6 +39,8 @@ class List extends Component {
             let age = studentList[student].age;
             let table = document.getElementById("tr-to-get");
             let row = table.insertRow(-1);
+            row.setAttribute("ID", studentList[student].ID);
+            row.addEventListener("click", this.routeUser);
             let cell1 = row.insertCell(0);
             let cell2 = row.insertCell(1);
             let cell3 = row.insertCell(2);
