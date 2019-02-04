@@ -16,6 +16,8 @@ class AddStudentValidation extends Component {
     getGrades = (values) => {
         let classArray = [];
         let gradesArray = [];
+        let classKeys = [];
+        let gradesKeys =[];
         let indexCount = 0;
         for(let index in values) {
             indexCount++;
@@ -24,9 +26,13 @@ class AddStudentValidation extends Component {
         console.log(numberOfClasses);
         for(let index = 1; index <= numberOfClasses; index++) {
             classArray.push(values[`class_${index}`]);
-            gradesArray.push(values[`grade_${index}`])
+            gradesArray.push(values[`grade_${index}`]);
+            classKeys.push(`class${index}`);
+            gradesKeys.push(`class${index}_grade`);
         }
-        const classInfo = classArray.concat(gradesArray);
+        const classValues = classArray.concat(gradesArray);
+        const AllKeys = classKeys.concat(gradesKeys);
+        const classInfo = classValues.concat(AllKeys);
         console.log("classArray: ", classInfo);
         return classInfo;
     };
@@ -41,7 +47,7 @@ class AddStudentValidation extends Component {
         let age = values['age'];
         let tardy = values['tardy'];
         let absent = values['absent'];
-        const studentInfo = [student_number, name, age, year, tardy, absent];
+        const studentInfo = [student_number, name, age, year, tardy, absent, "student_number", "name", "age", "year", "tardy", "absent"];
         const classInfo = this.getGrades(values);
         console.log("studentInfo: ", studentInfo);
         console.log("classInfo: ", classInfo);

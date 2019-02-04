@@ -7,35 +7,38 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $postdata = file_get_contents("php://input");
 $jsondata = json_decode($postdata, true);
-
-print_r($jsondata);
-
-
 $values = array_values($jsondata);
-$length = count($values[0]);
 
-$array1 = array_slice($values, 0, 6);
-$array2 = array_slice($values, 6, $length);
+print_r($values);
 
-//print_r($array1);
-print_r($array2);
+$studentValues = array_splice($values[0], 0, 6);
 
+function stringify($value)
+{
+    return (string)$value;
+}
 
-$keys = array_keys($values[0]);
-$insertKeys = implode(',', $keys);
+$realValues = array_map("stringify",$studentValues);
 
-//print_r($insertKeys);
+$studentKeys = array_splice($values[0], 0, 6);
 
-$valuesToInsert = implode(',', $values[0]);
-//print_r($valuesToInsert);
+$gradeValues = array_splice($values[0], 0, 2);
+
+$gradeKeys = array_splice($values[0], 0, 2);
+
+$insertStudentKeys = implode(",", $studentKeys);
+$insertStudentValues = implode(",", $realValues);
+
+//print_r($insertStudentValues);
+
 
 $addStudentQuery = "INSERT INTO `students`
-                    SET (" . $insertKeys . ")
-                    VALUES (" . $valuesToInsert . ")";
+                    (" . $insertStudentKeys . ")
+                    VALUES (" . $insertStudentValues . ")";
+
+print_r($addStudentQuery);
 
 $result = mysqli_query($conn, $addStudentQuery);
-
-//print $result;
 
 $output = [];
 if($result) {
@@ -48,5 +51,5 @@ if($result) {
     $output['result'] = "result is not true";
 }
 
-//print_r($output);
+print_r($output);
 ?>
