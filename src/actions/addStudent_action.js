@@ -1,7 +1,8 @@
 import types from './types';
 import axios from 'axios';
 
-export const addStudent_action = values => dispatch => {
+export const addStudent_action = (values) => dispatch => {
+    debugger;
     try {
         console.log("parameters: ", values);
         console.log("reducer");
@@ -9,7 +10,7 @@ export const addStudent_action = values => dispatch => {
             method: "POST",
             url: "/api/addStudentRecord.php",
             data : {
-                values
+                values,
             }
         }).then((studentRecords) => {
             dispatch({

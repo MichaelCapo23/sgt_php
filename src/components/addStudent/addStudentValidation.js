@@ -14,21 +14,27 @@ class AddStudentValidation extends Component {
     };
 
     getGrades = (values) => {
-        debugger;
         let classArray = [];
         let gradesArray = [];
+        let classKeys = [];
+        let gradesKeys =[];
         let indexCount = 0;
         for(let index in values) {
             indexCount++;
         }
-        const numberOfClasses = indexCount - 5;
+        const numberOfClasses = (indexCount - 5) / 2;
+        console.log(numberOfClasses);
         for(let index = 1; index <= numberOfClasses; index++) {
             classArray.push(values[`class_${index}`]);
-            gradesArray.push(values[`grade_${index}`])
+            gradesArray.push(values[`grade_${index}`]);
+            classKeys.push(`class${index}`);
+            gradesKeys.push(`class${index}_grade`);
         }
-
-        console.log("classArray: ", classArray);
-        console.log("gradesArray: ", gradesArray);
+        const classValues = classArray.concat(gradesArray);
+        const AllKeys = classKeys.concat(gradesKeys);
+        const classInfo = classValues.concat(AllKeys);
+        console.log("classArray: ", classInfo);
+        return classInfo;
     };
 
     callReducer = (values) => {
@@ -41,11 +47,13 @@ class AddStudentValidation extends Component {
         let age = values['age'];
         let tardy = values['tardy'];
         let absent = values['absent'];
-        const studentInfo = [student_number, name, age, year, tardy, absent];
+        const studentInfo = [student_number, name, age, year, tardy, absent, "student_number", "name", "age", "year", "tardy", "absent"];
         const classInfo = this.getGrades(values);
         console.log("studentInfo: ", studentInfo);
         console.log("classInfo: ", classInfo);
-        this.props.reducer(values);
+        const allInfo = studentInfo.concat(classInfo);
+        debugger;
+        this.props.reducer(allInfo);
     };
 
     ClassRows = (event) => {
@@ -94,7 +102,6 @@ class AddStudentValidation extends Component {
     render() {
         const {handleSubmit} = this.props;
         const {classes, rows} = this.state;
-        console.log(this.props);
         return (
             <Fragment>
                 <div className="firstInputContainer row center">

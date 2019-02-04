@@ -15,6 +15,7 @@ class List extends Component {
     };
 
     getGPA = (classData) => {
+        console.log(classData);
         const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade,]
         let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
         let totalScore = 0;
@@ -26,6 +27,7 @@ class List extends Component {
     };
 
     handleStudentList = (studentList, classData) => {
+        debugger;
         for(let student in studentList) {
             let name = studentList[student].name;
             let GPA = this.getGPA(classData[student]);
