@@ -42,8 +42,8 @@ for ($index = 0; $index < $count - 1; $index++) {
 $implodedKeys = implode(',', $arrayOfIDs);
 
 $getClassInfoQuery = "SELECT *
-                      FROM student_classes
-                      WHERE student_id IN (" . $implodedKeys . ") ORDER BY `student_id` ASC";
+                      FROM `student_classes`
+                      WHERE `student_id` IN (" . $implodedKeys . ") ORDER BY `student_id` ASC";
 
 $result = mysqli_query($conn, $getClassInfoQuery);
 

@@ -20,6 +20,7 @@ const App = () => (
             <Route path={"/signUp"} component={SignUp}/>
             <Route path={"/addStudent"} component={AddStudent}/>
             <Route path={"/editRecords"} component={EditRecords}/>
+            {/*<Route path={"/editPage/:bookID"} component={nameNotGivenYet};*/}
         </div>
     </div>
 );
