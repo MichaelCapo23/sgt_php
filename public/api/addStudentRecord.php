@@ -43,13 +43,39 @@ $result = mysqli_query($conn, $addStudentQuery);
 $output = [];
 if($result) {
     if (mysqli_num_rows($result) > 0) {
-        $output['success'] = true;
+        $output['StudentSuccess'] = true;
     } else {
-        $output['error'] = 'query failed!';
+        $output['StudentError'] = 'query failed!';
     }
 } else {
-    $output['result'] = "result is not true";
+    $output['StudentError'] = "result is false";
+}
+
+//print_r($output);
+
+$insertClassKeys = implode(",", $gradeKeys);
+$insertClassValues = implode(",", $gradeValues);
+
+
+$addClassesQuery = "INSERT INTO `student_classes`
+                    (" .$insertClassKeys. ")
+                    VALUES (". $insertClassValues . ")";
+
+print_r($addClassesQuery);
+
+$classResult = mysqli_query($conn, $addClassesQuery);
+
+if($classResult) {
+    if (mysqli_num_rows($classResult) > 0) {
+        $output['ClassSuccess'] = true;
+    } else {
+        $output['Classerror'] = 'query failed!';
+    }
+} else {
+    $output['Classerror'] = "result is false";
 }
 
 print_r($output);
+
+
 ?>
