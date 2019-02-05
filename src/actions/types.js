@@ -8,5 +8,7 @@ export default {
     ADD_STUDENT: "add_student",
     ADD_STUDENT_ERROR: "add_student_error",
     GET_TEACHER_LIST : "get_teacher_list",
-    GET_TEACHER_LIST_ERROR : "get_teacher_list_error"
+    GET_TEACHER_LIST_ERROR : "get_teacher_list_error",
+    UPDATE_RECORD: "update_record",
+    UPDATE_RECORD_ERROR: "update_record_error",
 }

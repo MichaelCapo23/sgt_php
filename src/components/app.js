@@ -10,7 +10,8 @@ import SignIn from '../components/signIn/signIn'
 import SignUp from '../components/SignUp/signUp'
 import AddStudent from '../components/addStudent';
 import EditRecords from '../components/edit/editRecords';
-import EditPage from "../components/edit/editPage"
+import EditPage from "../components/edit/editPage";
+import auth from './HOC/auth'
 
 const App = () => (
     <div>
@@ -19,9 +20,9 @@ const App = () => (
             <Route exact path={"/"} component={List}/>
             <Route path={"/signIn"} component={SignIn}/>
             <Route path={"/signUp"} component={SignUp}/>
-            <Route path={"/addStudent"} component={AddStudent}/>
-            <Route path={"/editRecords"} component={EditRecords}/>
-            <Route path={"/editPage/:bookID"} component={EditPage}/>
+            <Route path={"/addStudent"} component={auth(AddStudent)}/>
+            <Route path={"/editRecords"} component={auth(EditRecords)}/>
+            <Route path={"/editPage/:bookID"} component={auth(EditPage)}/>
         </div>
     </div>
 );
