@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getTeacherStudents} from '../../actions/getTeachersStudents_action'
 import {Link} from 'react-router-dom';
 
+
 class EditRecords extends Component {
 
     routeUser = (event) => {
@@ -70,6 +71,7 @@ class EditRecords extends Component {
             }
         }
         let gpa = totalScore / currentClassGrades.length;
+        this.props.teacher_list[index].GPA = gpa;
         return gpa.toFixed(2);
     };
 

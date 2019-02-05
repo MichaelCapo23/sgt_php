@@ -6,7 +6,6 @@ import './addStudent.css'
 
 class AddStudent extends Component {
 
-
     render() {
         return(
             <div>
