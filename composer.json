@@ -1,0 +1,14 @@
+{
+    "name": "michaelcapo23/sgt_php",
+    "description": "student grade table made with react/redux, redux form, php and \u001b[D\u001b[D\u001b[DPHP\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[R\u001b[C\u001b[C\u001b[C\u001b[CJS\u001b[C\u001b[C\u001b[/Redux \u001b[2~Redux form, PHP and MySQL",
+    "type": "project",
+    "authors": [
+        {
+            "name": "MichaelCapo23",
+            "email": "123pie23@gmail.com"
+        }
+    ],
+    "require": {
+        "naux/jwt-simple": "^1.0"
+    }
+}

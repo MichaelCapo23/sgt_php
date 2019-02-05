@@ -14,7 +14,7 @@ import EditRecords from '../components/edit/editRecords'
 const App = () => (
     <div>
         <Nav/>
-        <div className={"container"}>
+        <div className={"container row"}>
             <Route exact path={"/"} component={List}/>
             <Route path={"/signIn"} component={SignIn}/>
             <Route path={"/signUp"} component={SignUp}/>

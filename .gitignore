@@ -3,3 +3,5 @@
 node_modules
 connect.php
 ./config/connect.php
+
+/vendor/

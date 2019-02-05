@@ -6,9 +6,26 @@ import {Link} from 'react-router-dom';
 class EditRecords extends Component {
 
     routeUser = (event) => {
-        debugger;
+        event.target.parentElement.removeEventListener("click", this.routeUser);
         let ID = event.target.parentElement.attributes.ID.value;
-        this.props.history.push(`/editPage/${ID}`);
+        let row = document.getElementById(`${ID}`).children;
+        console.log(row);
+        for (let index = 0; index < row.length; index++) {
+            console.log(row);
+            const value = row[3].textContent;
+            console.log(value);
+            row[3].remove();
+            let td = document.createElement("td");
+            td.append(document.createElement("input"));
+            document.getElementById(`${ID}`).prepend(td);
+            row[0].value = value;
+            row[0].childNodes.value = value;
+        }
+        let button = document.createElement("button");
+        button.innerHTML = "save";
+        button.classList.add("btn");
+        button.classList.add("saveBTN");
+        document.getElementById(`${ID}`).append(button);
     };
 
 
@@ -19,19 +36,30 @@ class EditRecords extends Component {
 
     getGPA = (classData, index) => {
         console.log(classData);
+        debugger;
         const classArray = [classData[index].class1_grade, classData[index].class2_grade, classData[index].class3_grade, classData[index].class4_grade, classData[index].class5_grade, classData[index].class6_grade]
         let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
         let totalScore = 0;
-        for(let index = 0; index < currentClassGrades.length; index++) {
-            totalScore = totalScore += parseFloat(currentClassGrades[index]);
+        for (let index = 0; index < currentClassGrades.length; index++) {
+            if (currentClassGrades[index] > 89.9) {
+                totalScore += 4
+            } else if (currentClassGrades[index] > 79.9) {
+                totalScore += 3;
+            } else if (currentClassGrades[index] > 69.9) {
+                totalScore += 2;
+            } else if (currentClassGrades[index] > 59.9) {
+                totalScore += 1;
+            } else {
+                totalScore += 0;
+            }
         }
-        let average = totalScore / currentClassGrades.length;
-        return average.toFixed(2);
+        let gpa = totalScore / currentClassGrades.length;
+        return gpa.toFixed(2);
     };
 
 
     handleStudentList = (teacher_list) => {
-        for(let student in teacher_list) {
+        for (let student in teacher_list) {
             let name = teacher_list[student].name;
             let GPA = this.getGPA(teacher_list, student);
             let year = teacher_list[student].year;

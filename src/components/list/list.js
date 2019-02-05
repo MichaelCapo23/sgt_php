@@ -1,49 +1,20 @@
 import React, {Component, Fragment} from "react";
 import {connect} from 'react-redux'
-import {get_students_action} from '../../actions/get_students_action'
+import {get_students_action} from '../../actions/get_students_action';
 
 class List extends Component {
     state = {
         studentList: {},
         classData: {},
+        showModal: false,
     }
-
-    routeUser = (event) => {
-        event.target.parentElement.removeEventListener("click", this.routeUser);
-        let ID = event.target.parentElement.attributes.ID.value;
-        let row = document.getElementById(`${ID}`).children;
-        console.log(row);
-
-        const age = row[3].textContent;
-        row[3].remove();
-        document.getElementById(`${ID}`).prepend(document.createElement("input"));
-        row[0].value = studentName;
-
-        const year = row[3].textContent;
-        row[3].remove();
-        document.getElementById(`${ID}`).prepend(document.createElement("input"));
-        row[0].value = year;
-
-        const GPA = row[3].textContent;
-        row[3].remove();
-        document.getElementById(`${ID}`).prepend(document.createElement("input"));
-        row[0].value = GPA;
-
-
-        const studentName = row[3].textContent;
-        row[3].remove();
-        document.getElementById(`${ID}`).prepend(document.createElement("input"));
-        row[0].value = studentName;
-    };
 
     componentDidMount = async () => {
         let token = localStorage.getItem("token");
         await this.props.get_students_action(token);
-
     };
 
     getGPA = (classData) => {
-        console.log(classData);
         const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade,]
         let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
         let totalScore = 0;
@@ -63,8 +34,7 @@ class List extends Component {
             let table = document.getElementById("tr-to-get");
             let row = table.insertRow(-1);
             row.setAttribute("ID", studentList[student].ID);
-            // row.classList.add(`student_id_${studentList[student].ID}`);
-            row.addEventListener("click", this.routeUser);
+            row.addEventListener("click", this.showClasses);
             let cell1 = row.insertCell(0);
             let cell2 = row.insertCell(1);
             let cell3 = row.insertCell(2);
@@ -102,6 +72,7 @@ class List extends Component {
 
     render() {
         console.log("student list: ", this.props.studentList);
+        console.log("class data: ", this.props.classData);
         const table = this.makeListContainers();
         // let token = localStorage.getItem("token");
         return (
