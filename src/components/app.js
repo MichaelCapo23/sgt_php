@@ -9,7 +9,8 @@ import Nav from '../components/nav'
 import SignIn from '../components/signIn/signIn'
 import SignUp from '../components/SignUp/signUp'
 import AddStudent from '../components/addStudent';
-import EditRecords from '../components/edit/editRecords'
+import EditRecords from '../components/edit/editRecords';
+import EditPage from "../components/edit/editPage"
 
 const App = () => (
     <div>
@@ -20,7 +21,7 @@ const App = () => (
             <Route path={"/signUp"} component={SignUp}/>
             <Route path={"/addStudent"} component={AddStudent}/>
             <Route path={"/editRecords"} component={EditRecords}/>
-            {/*<Route path={"/editPage/:bookID"} component={nameNotGivenYet};*/}
+            <Route path={"/editPage/:bookID"} component={EditPage}/>
         </div>
     </div>
 );

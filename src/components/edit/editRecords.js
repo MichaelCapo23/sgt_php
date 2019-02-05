@@ -6,26 +6,43 @@ import {Link} from 'react-router-dom';
 class EditRecords extends Component {
 
     routeUser = (event) => {
-        event.target.parentElement.removeEventListener("click", this.routeUser);
-        let ID = event.target.parentElement.attributes.ID.value;
-        let row = document.getElementById(`${ID}`).children;
-        console.log(row);
-        for (let index = 0; index < row.length; index++) {
-            console.log(row);
-            const value = row[3].textContent;
-            console.log(value);
-            row[3].remove();
-            let td = document.createElement("td");
-            td.append(document.createElement("input"));
-            document.getElementById(`${ID}`).prepend(td);
-            row[0].value = value;
-            row[0].childNodes.value = value;
+        const ID = event.target.parentElement.id;
+        const {teacher_list} = this.props;
+        const timesToLoop = teacher_list.map((accum) => {return accum++});
+        let indexNumber = 0;
+        for(let index = 0; index < timesToLoop.length; index++) {
+            if(teacher_list[index].ID == ID) {
+                indexNumber = index;
+            }
         }
-        let button = document.createElement("button");
-        button.innerHTML = "save";
-        button.classList.add("btn");
-        button.classList.add("saveBTN");
-        document.getElementById(`${ID}`).append(button);
+        console.log(indexNumber);
+        this.props.history.push({
+            pathname: `/editPage/${ID}`,
+            state: {
+                id: ID,
+                data: teacher_list[indexNumber],
+            }
+        });
+
+        // let ID = event.target.parentElement.attributes.ID.value;
+        // let row = document.getElementById(`${ID}`).children;
+        // console.log(row);
+        // for (let index = 0; index < row.length; index++) {
+        //     console.log(row);
+        //     const value = row[3].textContent;
+        //     console.log(value);
+        //     row[3].remove();
+        //     let td = document.createElement("td");
+        //     td.append(document.createElement("input"));
+        //     document.getElementById(`${ID}`).prepend(td);
+        //     row[0].value = value;
+        //     row[0].childNodes.value = value;
+        // }
+        // let button = document.createElement("button");
+        // button.innerHTML = "save";
+        // button.classList.add("btn");
+        // button.classList.add("saveBTN");
+        // document.getElementById(`${ID}`).append(button);
     };
 
 
@@ -34,9 +51,8 @@ class EditRecords extends Component {
         await this.props.getTeacherStudents(token);
     };
 
-    getGPA = (classData, index) => {
+    getGPA(classData, index){
         console.log(classData);
-        debugger;
         const classArray = [classData[index].class1_grade, classData[index].class2_grade, classData[index].class3_grade, classData[index].class4_grade, classData[index].class5_grade, classData[index].class6_grade]
         let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
         let totalScore = 0;
