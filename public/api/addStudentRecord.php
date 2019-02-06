@@ -9,8 +9,6 @@ $postdata = file_get_contents("php://input");
 $jsondata = json_decode($postdata, true);
 $values = array_values($jsondata);
 
-print_r($values);
-
 $studentValues = array_splice($values[0], 0, 6);
 
 function stringify($value)
@@ -18,7 +16,7 @@ function stringify($value)
     return (string)$value;
 }
 
-$realValues = array_map("stringify",$studentValues);
+$realValues = array_map("stringify", $studentValues);
 
 $studentKeys = array_splice($values[0], 0, 6);
 
@@ -27,21 +25,27 @@ $gradeValues = array_splice($values[0], 0, 2);
 $gradeKeys = array_splice($values[0], 0, 2);
 
 $insertStudentKeys = implode(",", $studentKeys);
-$insertStudentValues = implode(",", $realValues);
 
-//print_r($insertStudentValues);
+$insertStudentKeys = implode(",", $studentKeys);
+
+function add_quotes($realValues)
+{
+    return sprintf("'%s'", $realValues);
+}
+
+$insertStudentValues = implode(',', array_map('add_quotes', $realValues));
 
 
 $addStudentQuery = "INSERT INTO `students`
-                    (" . $insertStudentKeys . ")
-                    VALUES (" . $insertStudentValues . ")";
+                    ($insertStudentKeys)
+                    VALUES ($insertStudentValues)";
 
-print_r($addStudentQuery);
 
+//print($addStudentQuery);
 $result = mysqli_query($conn, $addStudentQuery);
 
 $output = [];
-if($result) {
+if ($result) {
     if (mysqli_num_rows($result) > 0) {
         $output['StudentSuccess'] = true;
     } else {
@@ -51,27 +55,25 @@ if($result) {
     $output['StudentError'] = "result is false";
 }
 
-//print_r($output);
-
 $insertClassKeys = implode(",", $gradeKeys);
-$insertClassValues = implode(",", $gradeValues);
+
+function add_quote($gradeValues)
+{
+    return sprintf("'%s'", $gradeValues);
+}
+
+$insertClassValues = implode(',', array_map('add_quote', $gradeValues));
 
 
 $addClassesQuery = "INSERT INTO `student_classes`
-                    (" .$insertClassKeys. ")
-                    VALUES (". $insertClassValues . ")";
+                    ($insertClassKeys)
+                    VALUES ($insertClassValues)";
 
 print_r($addClassesQuery);
 
 $classResult = mysqli_query($conn, $addClassesQuery);
 
-if($classResult) {
-    if (mysqli_num_rows($classResult) > 0) {
-        $output['ClassSuccess'] = true;
-    } else {
-        $output['Classerror'] = 'query failed!';
-    }
-} else {
+if ($classResult) {
     $output['Classerror'] = "result is false";
 }
 

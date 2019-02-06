@@ -51,58 +51,58 @@ class EditPage extends Component {
                 <form  onSubmit={handleSubmit(this.test)}>
                     <h3 className={"center RightHeader row"}>{`Edit ${data.name}'s Record`}</h3>
                     <div className={"row"}>
-                        <Field placeholder={data.name} size={"s4"} type={"text"} name={"name"} label={"Name"}
+                        <Field size={"s4"} type={"text"} name={"name"} label={"Name"}
                                component={Forms}/>
 
-                        <Field placeholder={data.age} size={"s4"} type={"text"} name={"age"} label={"Age"}
+                        <Field size={"s4"} type={"text"} name={"age"} label={"Age"}
                                component={Forms}/>
 
-                        <Field placeholder={data.year} size={"s4"} type={"text"} name={"year"} label={"Year"}
+                        <Field size={"s4"} type={"text"} name={"year"} label={"Year"}
                                component={Forms}/>
 
-                        <Field placeholder={data.GPA} size={"s4"} type={"text"} name={"GPA"} label={"GPA"}
+                        <Field size={"s4"} type={"text"} name={"GPA"} label={"GPA"}
                                component={Forms}/>
 
-                        <Field placeholder={data.tardy} size={"s4"} type={"text"} name={"tardy"} label={"tardy"}
+                        <Field size={"s4"} type={"text"} name={"tardy"} label={"tardy"}
                                component={Forms}/>
 
-                        <Field placeholder={data.absent} size={"s4"} type={"text"} name={"absent"} label={"absent"}
+                        <Field size={"s4"} type={"text"} name={"absent"} label={"absent"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class1} size={"s4"} type={"text"} name={"Class #1"} label={"Class #1"}
+                        <Field size={"s4"} type={"text"} name={"Class1"} label={"Class #1"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class1_grade} size={"s4"} type={"text"} name={"Class #1 Grade"} label={"Class #1 Grade"}
+                        <Field size={"s4"} type={"text"} name={"Class1_Grade"} label={"Class #1 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class2} size={"s4"} type={"text"} name={"Class #2"} label={"Class #2"}
+                        <Field size={"s4"} type={"text"} name={"Class2"} label={"Class #2"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class2_grade} size={"s4"} type={"text"} name={"Class #2 Grade"} label={"Class #2 Grade"}
+                        <Field size={"s4"} type={"text"} name={"Class2_Grade"} label={"Class #2 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class3} size={"s4"} type={"text"} name={"Class #3"} label={"Class #3"}
+                        <Field placeholder={data.class3} size={"s4"} type={"text"} name={"Class3"} label={"Class #3"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class3_grade} size={"s4"} type={"text"} name={"Class #3 Grade"} label={"Class #3 Grade"}
+                        <Field placeholder={data.class3_grade} size={"s4"} type={"text"} name={"Class3_Grade"} label={"Class #3 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class4} size={"s4"} type={"text"} name={"Class #4"} label={"Class #4"}
+                        <Field placeholder={data.class4} size={"s4"} type={"text"} name={"Class4"} label={"Class #4"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class4_grade} size={"s4"} type={"text"} name={"Class #4 Grade"} label={"Class #4 Grade"}
+                        <Field placeholder={data.class4_grade} size={"s4"} type={"text"} name={"Class4_Grade"} label={"Class #4 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class5} size={"s4"} type={"text"} name={"Class #5"} label={"Class #5"}
+                        <Field placeholder={data.class5} size={"s4"} type={"text"} name={"Class5"} label={"Class #5"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class5_grade} size={"s4"} type={"text"} name={"Class #5 Grade"} label={"Class #5 Grade"}
+                        <Field placeholder={data.class5_grade} size={"s4"} type={"text"} name={"Class5_Grade"} label={"Class #5 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class6} size={"s4"} type={"text"} name={"Class #6"} label={"Class #6"}
+                        <Field placeholder={data.class6} size={"s4"} type={"text"} name={"Class6"} label={"Class #6"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class6_grade} size={"s4"} type={"text"} name={"Class #6 Grade"} label={"Class #6 Grade"}
+                        <Field placeholder={data.class6_grade} size={"s4"} type={"text"} name={"Class6_Grade"} label={"Class #6 Grade"}
                                component={Forms}/>
                     </div>
                 </form>
@@ -116,42 +116,46 @@ function validate() {
     return errors;
 }
 
-function mapStateToProps() {
-    return {}
+function mapStateToProps({form}, {location}) {
+    let initialValues = {};
+    const { add_student_form } = form;
+    const { state } = location;
+
+    if(add_student_form && state && state.data){
+        const { data } = state;
+
+        initialValues = {
+            name: data.name,
+            age: data.age,
+            year: data.year,
+            GPA: data.GPA,
+            tardy: data.tardy,
+            absent: data.absent,
+            Class1: data.class1,
+            Class1_Grade: data.class1_grade,
+            Class2: data.class2,
+            Class2_Grade: data.class2_grade,
+            Class3: data.class3,
+            Class3_Grade: data.class3_grade,
+            Class4: data.class4,
+            Class4_Grade: data.class4_grade,
+            Class5: data.class5,
+            Class5_Grade: data.class5_grade,
+            Class6: data.class6,
+            Class6_Grade: data.class6_grade,
+
+        }
+    }
+
+    return {
+        initialValues
+    }
 }
 
-export default reduxForm({
+export default connect(mapStateToProps, {
+    UpdateRecord_action
+})(reduxForm({
     form: "add_student_form",
     validate,
-})(connect(mapStateToProps, {
-    UpdateRecord_action
+    enableReinitialize: true
 })(EditPage));
-
-
-{/*<div className={"editContainer row"}>*/
-}
-{/*<div className="leftSide col s6 m6 l6 lg6">*/
-}
-{/*<h3 className={"center LeftHeader"}>Original Values</h3>*/
-}
-{/*<div className={"left"}>{`Name: ${data.name}`}</div>*/
-}
-{/*</div>*/
-}
-
-{/*<div className="rightSide col s6 m6 l6 lg6">*/
-}
-{/*<form onSubmit={handleSubmit(this.test)}>*/
-}
-{/*<h3 className={"center RightHeader "}>Edited Values</h3>*/
-}
-{/*<label htmlFor="name">Name</label>*/
-}
-{/*<input autoComplete={"off"} placeholder={data.name} type={"text"}  id={"name"} name={"name"} className={"left s12"}/>*/
-}
-{/*</form>*/
-}
-{/*</div>*/
-}
-{/*</div>*/
-}

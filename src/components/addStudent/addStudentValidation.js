@@ -37,7 +37,7 @@ class AddStudentValidation extends Component {
         return classInfo;
     };
 
-    callReducer = (values) => {
+    callAction = (values) => {
         console.log("values: ", values);
         let e = document.getElementById("dropMenu");
         let year = e.options[e.selectedIndex].value;
@@ -167,7 +167,7 @@ class AddStudentValidation extends Component {
 
 
                 <div className={`${classes ? "" : "hide"} z-depth-4 classes row center`}>
-                    <form onSubmit={handleSubmit(this.callReducer)}>
+                    <form onSubmit={handleSubmit(this.callAction)}>
                         <h5 className="center">Enter Classes</h5>
                         <div className="input-field col s10 offset-s1">
                             <input onChange={event => this.ClassRows(event)} name={"classes"} id={"classes"}
