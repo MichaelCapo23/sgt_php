@@ -20,12 +20,6 @@ $realValues = array_map("stringify", $studentValues);
 
 $studentKeys = array_splice($values[0], 0, 6);
 
-$gradeValues = array_splice($values[0], 0, 2);
-
-$gradeKeys = array_splice($values[0], 0, 2);
-
-$insertStudentKeys = implode(",", $studentKeys);
-
 $insertStudentKeys = implode(",", $studentKeys);
 
 function add_quotes($realValues)
@@ -41,29 +35,36 @@ $addStudentQuery = "INSERT INTO `students`
                     VALUES ($insertStudentValues)";
 
 
-//print($addStudentQuery);
 $result = mysqli_query($conn, $addStudentQuery);
 
 $output = [];
 if ($result) {
-    if (mysqli_num_rows($result) > 0) {
-        $output['StudentSuccess'] = true;
-    } else {
-        $output['StudentError'] = 'query failed!';
-    }
+    $last_id = mysqli_insert_id($conn);
+    $output['StudentSuccess'] = true;
 } else {
-    $output['StudentError'] = "result is false";
+    $output['StudentError'] = "query failed";
 }
 
-$insertClassKeys = implode(",", $gradeKeys);
+$student_id = "student_id";
 
+
+$className = array_splice($values[0], 0, 6);
+$classGrades = array_splice($values[0], 0, 6);
+$classNumbers = array_splice($values[0], 0, 6);
+$classGradeNumbers = array_splice($values[0], 0, 6);
+
+$tableKeys = array_merge($classNumbers, $classGradeNumbers);
+$tableValues = array_merge($className, $classGrades);
+array_unshift($tableKeys, $student_id);
+array_unshift($tableValues, $last_id);
+
+$insertClassKeys = implode(",", $tableKeys);
 function add_quote($gradeValues)
 {
     return sprintf("'%s'", $gradeValues);
 }
 
-$insertClassValues = implode(',', array_map('add_quote', $gradeValues));
-
+$insertClassValues = implode(',', array_map('add_quote', $tableValues));
 
 $addClassesQuery = "INSERT INTO `student_classes`
                     ($insertClassKeys)
@@ -74,6 +75,8 @@ print_r($addClassesQuery);
 $classResult = mysqli_query($conn, $addClassesQuery);
 
 if ($classResult) {
+    $output['ClassSuccess'] = true;
+} else {
     $output['Classerror'] = "result is false";
 }
 

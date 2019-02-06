@@ -24,9 +24,18 @@ class AddStudentValidation extends Component {
         }
         const numberOfClasses = (indexCount - 5) / 2;
         console.log(numberOfClasses);
-        for(let index = 1; index <= numberOfClasses; index++) {
-            classArray.push(values[`class_${index}`]);
-            gradesArray.push(values[`grade_${index}`]);
+        for(let index = 1; index <= 6; index++) {
+            if(values[`class_${index}`]) {
+                classArray.push(values[`class_${index}`]);
+            } else {
+                classArray.push('null');
+            }
+
+            if(values[`grade_${index}`]) {
+                gradesArray.push(values[`grade_${index}`]);
+            } else {
+                gradesArray.push('null');
+            }
             classKeys.push(`class${index}`);
             gradesKeys.push(`class${index}_grade`);
         }
