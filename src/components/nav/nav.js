@@ -57,7 +57,6 @@ class Nav extends Component {
         const {auth} = this.props;
         let token = localStorage.getItem("token");
         let links = [...common];
-        debugger;
         if(auth || token) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
