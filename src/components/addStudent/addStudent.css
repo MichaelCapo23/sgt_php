@@ -15,6 +15,10 @@
     border-left: black 1px solid;
 }
 
+.input-field {
+    margin-bottom: 2rem !important;
+}
+
 .LeftHeader {
     border-bottom: 2px solid black;
 }
