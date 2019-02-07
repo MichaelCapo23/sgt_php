@@ -36,27 +36,24 @@ class EditPage extends Component {
         let classArray = [];
         let gradesArray = [];
         let classKeys = [];
-        let gradesKeys =[];
+        let gradesKeys = [];
         let indexCount = 0;
-        for(let index in values) {
-            indexCount++;
-        }
-        const numberOfClasses = (indexCount - 5) / 2;
-        console.log(numberOfClasses);
-        for(let index = 1; index <= 6; index++) {
-            if(values[`class_${index}`]) {
-                classArray.push(values[`class_${index}`]);
+        for (let index = 1; index <=6; index++) {
+            if (values[`Class${index}`]) {
+                classArray.push(values[`Class${index}`]);
             } else {
                 classArray.push('null');
             }
 
-            if(values[`grade_${index}`]) {
-                gradesArray.push(values[`grade_${index}`]);
+            if (values[`Class${index}_grade`]) {
+                gradesArray.push(values[`Class${index}_grade`]);
             } else {
                 gradesArray.push('null');
             }
-            classKeys.push(`class${index}`);
-            gradesKeys.push(`class${index}_grade`);
+        }
+        for(let indexCount = 1; indexCount <=6; indexCount++) {
+            classKeys.push(`class${indexCount}`);
+            gradesKeys.push(`class${indexCount}_grade`);
         }
         const classValues = classArray.concat(gradesArray);
         const AllKeys = classKeys.concat(gradesKeys);
@@ -65,12 +62,11 @@ class EditPage extends Component {
         return classInfo;
     };
 
-    test = (values) => {
-        debugger;
+    gatherValues = (values) => {
         console.log(values);
-        let year = values['year'];
+        let year = values.year;
         console.log("year: ", year);
-        let student_number = values['student_number'];
+        let student_number = values.student_number;
         let name = values['name'];
         let age = values['age'];
         let tardy = values['tardy'];
@@ -80,6 +76,7 @@ class EditPage extends Component {
         console.log("studentInfo: ", studentInfo);
         console.log("classInfo: ", classInfo);
         const allInfo = studentInfo.concat(classInfo);
+        console.log("allInfo: ", allInfo);
         this.props.UpdateRecord_action(allInfo);
     };
 
@@ -95,64 +92,80 @@ class EditPage extends Component {
         const {data} = this.state;
         return (
             <div className={"editContainer"}>
-                <form  onSubmit={handleSubmit(this.test)}>
+                <form onSubmit={handleSubmit(this.gatherValues)}>
                     <h3 className={"center RightHeader row"}>{`Edit ${data.name}'s Record`}</h3>
                     <div className={"row"}>
-                        <Field placeholder={data.name} size={"s4"} type={"text"} name={"name"} label={"Name"}
+                        <Field placeholder={data.name} size={"s3 offset-s1"} type={"text"} name={"name"} label={"Name"}
                                component={Forms}/>
 
-                        <Field placeholder={data.student_number} size={"s4"} type={"text"} name={"student_number"} label={"student Number"}
+                        <Field placeholder={data.student_number} size={"s3 offset-s1"} type={"text"}
+                               name={"student_number"}
+                               label={"student Number"}
                                component={Forms}/>
 
-                        <Field placeholder={data.age} size={"s4"} type={"text"} name={"age"} label={"Age"}
+                        <Field placeholder={data.age} size={"s3 offset-s1"} type={"text"} name={"age"} label={"Age"}
                                component={Forms}/>
 
-                        <Field placeholder={data.year} size={"s4"} type={"text"} name={"year"} label={"Year"}
+                        <Field placeholder={data.year} size={"s3 offset-s1"} type={"text"} name={"year"} label={"Year"}
                                component={Forms}/>
 
-                        <Field placeholder={data.GPA} size={"s4"} type={"text"} name={"GPA"} label={"GPA"}
+                        <Field placeholder={data.GPA} size={"s3 offset-s1"} type={"text"} name={"GPA"} label={"GPA"}
                                component={Forms}/>
 
-                        <Field placeholder={data.tardy} size={"s4"} type={"text"} name={"tardy"} label={"tardy"}
+                        <Field placeholder={data.tardy} size={"s3 offset-s1"} type={"text"} name={"tardy"}
+                               label={"tardy"}
                                component={Forms}/>
 
-                        <Field placeholder={data.absent} size={"s4"} type={"text"} name={"absent"} label={"absent"}
+                        <Field placeholder={data.absent} size={"s3 offset-s1"} type={"text"} name={"absent"}
+                               label={"absent"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class1} size={"s4"} type={"text"} name={"Class1"} label={"Class #1"}
+                        <Field placeholder={data.class1} size={"s3 offset-s1"} type={"text"} name={"Class1"}
+                               label={"Class #1"}
                                component={Forms}/>
 
-                        <Field placeholder={data.Class1_grade} size={"s4"} type={"text"} name={"Class1_grade"} label={"Class #1 Grade"}
+                        <Field placeholder={data.Class1_grade} size={"s3 offset-s1"} type={"text"} name={"Class1_grade"}
+                               label={"Class #1 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class2} size={"s4"} type={"text"} name={"Class2"} label={"Class #2"}
+                        <Field placeholder={data.class2} size={"s3 offset-s1"} type={"text"} name={"Class2"}
+                               label={"Class #2"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class2_grade} size={"s4"} type={"text"} name={"Class2_grade"} label={"Class #2 Grade"}
+                        <Field placeholder={data.class2_grade} size={"s3 offset-s1"} type={"text"} name={"Class2_grade"}
+                               label={"Class #2 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class3} size={"s4"} type={"text"} name={"Class3"} label={"Class #3"}
+                        <Field placeholder={data.class3} size={"s3 offset-s1"} type={"text"} name={"Class3"}
+                               label={"Class #3"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class3_grade} size={"s4"} type={"text"} name={"Class3_grade"} label={"Class #3 Grade"}
+                        <Field placeholder={data.class3_grade} size={"s3 offset-s1"} type={"text"} name={"Class3_grade"}
+                               label={"Class #3 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class4} size={"s4"} type={"text"} name={"Class4"} label={"Class #4"}
+                        <Field placeholder={data.class4} size={"s3 offset-s1"} type={"text"} name={"Class4"}
+                               label={"Class #4"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class4_grade} size={"s4"} type={"text"} name={"Class4_grade"} label={"Class #4 Grade"}
+                        <Field placeholder={data.class4_grade} size={"s3 offset-s1"} type={"text"} name={"Class4_grade"}
+                               label={"Class #4 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class5} size={"s4"} type={"text"} name={"Class5"} label={"Class #5"}
+                        <Field placeholder={data.class5} size={"s3 offset-s1"} type={"text"} name={"Class5"}
+                               label={"Class #5"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class5_grade} size={"s4"} type={"text"} name={"Class5_grade"} label={"Class #5 Grade"}
+                        <Field placeholder={data.class5_grade} size={"s3 offset-s1"} type={"text"} name={"Class5_grade"}
+                               label={"Class #5 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class6} size={"s4"} type={"text"} name={"Class6"} label={"Class #6"}
+                        <Field placeholder={data.class6} size={"s3 offset-s1"} type={"text"} name={"Class6"}
+                               label={"Class #6"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class6_grade} size={"s4"} type={"text"} name={"Class6_grade"} label={"Class #6 Grade"}
+                        <Field placeholder={data.class6_grade} size={"s3 offset-s1"} type={"text"} name={"Class6_grade"}
+                               label={"Class #6 Grade"}
                                component={Forms}/>
 
                         <div className="center">
@@ -168,11 +181,11 @@ class EditPage extends Component {
 
 function mapStateToProps({form}, {location}) {
     let initialValues = {};
-    const { add_student_form } = form;
-    const { state } = location;
+    const {add_student_form} = form;
+    const {state} = location;
 
-    if(add_student_form && state && state.data){
-        const { data } = state;
+    if (add_student_form && state && state.data) {
+        const {data} = state;
 
         initialValues = {
             name: data.name,
@@ -203,82 +216,87 @@ function mapStateToProps({form}, {location}) {
     }
 }
 
-function validate({student_number, name, year, age, tardy, absent}) {
-// , Class1, Class1_grade, Class2, Class2_grade, Class3, Class3_grade, Class4, Class4_grade, Class5, Class5_grade, Class6, Class6_grade
-    debugger;
+function validate({student_number, name, year, age, tardy, absent, Class1, Class1_grade, Class2, Class2_grade, Class3, Class3_grade, Class4, Class4_grade, Class5, Class5_grade, Class6, Class6_grade}) {
     const error = {};
+    const classRegex = /[A-Za-z0-9]+/;
+    const gradeRegex = /^\d{1,2}$/;
+    const nameRegex = /^[a-z ,.'-]+$/i;
+    const attendanceRegex = /^\d{1,2}$/;
+    const student_numberRegex = /^\d{1,10}$/;
 
-    if (!student_number) {
+    if (!student_numberRegex.test(student_number)) {
         error.student_id = "Please enter a valid email"
     }
 
-    if (!name) {
+    if (!nameRegex.test(name)) {
         error.name = "Please enter a valid name, at least 4 characters"
     }
 
-    if (!age) {
+    if (!attendanceRegex.test(age)) {
         error.age = "Please enter a valid 1-99"
     }
 
-    if(!year) {
+    if (!year) {
         error.year = "please enter a valid year"
     }
 
-    if(!tardy) {
+    if (!attendanceRegex.test(tardy)) {
         error.tardy = "please enter a valid number 0-999"
     }
 
-    if(!absent) {
+    if (!attendanceRegex.test(absent)) {
         error.absent = "please enter a valid number 0-999"
     }
 
-    // if (!Class1) {
-    //     error.Class1 = "Please enter a valid class"
-    // }
-    //
-    // if (!Class1_grade) {
-    //     error.Class1_grade = "Please enter a valid grade, 1-100"
-    // }
-    //
-    // if (!Class2) {
-    //     error.Class2 = "Please enter a valid class"
-    // }
-    //
-    // if (!Class2_grade) {
-    //     error.Class2_grade = "Please enter a valid grade, 1-100"
-    // }
-    //
-    // if (!Class3) {
-    //     error.Class3 = "Please enter a valid class"
-    // }
-    //
-    // if (!Class3_grade) {
-    //     error.Class3_grade = "Please enter a valid grade, 1-100"
-    // }
-    //
-    // if (!Class4) {
-    //     error.Class4 = "Please enter a valid class"
-    // }
-    //
-    // if (!Class4_grade) {
-    //     error.Class4_grade = "Please enter a valid grade, 1-100"
-    // }
-    //
-    // if (!Class5) {
-    //     error.Class5 = "Please enter a valid class"
-    // }
-    //
-    // if (!Class5_grade) {
-    //     error.Class5_grade = "Please enter a valid grade, 1-100"
-    // }
-    //
-    // if (!Class6) {
-    //     error.Class6 = "Please enter a valid class"
-    // }
-    //
-    // if (!Class6_grade) {
-    //     error.Class6_grade = "Please enter a valid grade, 1-100"
-    // }
+    if (!classRegex.test(Class1)) {
+        error.Class1 = "Please enter a valid class"
+    }
+
+    if (!gradeRegex.test(Class1_grade)) {
+        error.Class1_grade = "Please enter a valid grade, 1-100"
+    }
+
+    if (!classRegex.test(Class2)) {
+        error.Class2 = "Please enter a valid class"
+    }
+
+    if (!gradeRegex.test(Class2_grade)) {
+        error.Class2_grade = "Please enter a valid grade, 1-100"
+    }
+
+    if (!classRegex.test(Class3)) {
+        error.Class3 = "Please enter a valid class"
+    }
+
+    if (!gradeRegex.test(Class3_grade)) {
+        error.Class3_grade = "Please enter a valid grade, 1-100"
+    }
+
+    if (!classRegex.test(Class4)) {
+        error.Class4 = "Please enter a valid class"
+    }
+
+    if (!gradeRegex.test(Class4_grade)) {
+        error.Class4_grade = "Please enter a valid grade, 1-100"
+    }
+
+    if (!classRegex.test(Class5)) {
+        error.Class5 = "Please enter a valid class"
+    }
+
+    if (!gradeRegex.test(Class5_grade)) {
+        error.Class5_grade = "Please enter a valid grade, 1-100"
+    }
+
+    if (!classRegex.test(Class6)) {
+        error.Class6 = "Please enter a valid class"
+    }
+
+    if (!gradeRegex.test(Class6_grade)) {
+        error.Class6_grade = "Please enter a valid grade, 1-100"
+    }
+
+
     return (
         error
     )

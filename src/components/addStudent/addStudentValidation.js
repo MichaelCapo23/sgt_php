@@ -24,6 +24,7 @@ class AddStudentValidation extends Component {
         }
         const numberOfClasses = (indexCount - 5) / 2;
         console.log(numberOfClasses);
+        debugger;
         for(let index = 1; index <= 6; index++) {
             if(values[`class_${index}`]) {
                 classArray.push(values[`class_${index}`]);
