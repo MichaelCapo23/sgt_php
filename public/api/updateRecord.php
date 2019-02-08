@@ -9,7 +9,6 @@ $postdata = file_get_contents("php://input");
 $jsonData = json_decode($postdata, true);
 $values = array_values($jsonData);
 
-print_r($values);
 $ID = $values[0][36];
 
 $studentValues = array_splice($values[0], 0, 6);
@@ -41,8 +40,6 @@ $addStudentQuery = "UPDATE `students`
                     $key5 = '$value5',
                     $key6 = '$value6'
                     WHERE `ID` = '$ID'";
-
-print_r($addStudentQuery);
 
 $result = mysqli_query($conn, $addStudentQuery);
 
@@ -86,14 +83,6 @@ $value10 = $tableValues[9];
 $value11 = $tableValues[10];
 $value12 = $tableValues[11];
 
-
-$student_id = implode($ID);
-
-echo "<br>";
-print_r($student_id);
-echo "<br>";
-
-
 $addClassesQuery = "UPDATE `student_classes`
                     SET $key1 = '$value1',
                     $key2 = '$value2',
@@ -109,8 +98,6 @@ $addClassesQuery = "UPDATE `student_classes`
                     $key12 = '$value12'
                     WHERE `student_id` = '$ID'";
 
-print_r($addClassesQuery);
-
 $classResult = mysqli_query($conn, $addClassesQuery);
 
 if ($classResult) {
@@ -119,7 +106,7 @@ if ($classResult) {
     $output['Classerror'] = "query failed";
 }
 
-print_r($output);
+print_r(json_encode($output));
 
 
 
