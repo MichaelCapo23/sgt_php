@@ -3,6 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux"
 import {UpdateRecord_action} from '../../actions/updateRecord_action';
 import Forms from "../../helpers";
+import Modal from '../../helpers/modal'
 
 
 class EditPage extends Component {
@@ -76,7 +77,6 @@ class EditPage extends Component {
         console.log("studentInfo: ", studentInfo);
         console.log("classInfo: ", classInfo);
         const allInfo = studentInfo.concat(classInfo);
-        debugger;
         allInfo.push(this.state.data['ID']);
         console.log("allInfo: ", allInfo);
         this.props.UpdateRecord_action(allInfo);
@@ -171,7 +171,9 @@ class EditPage extends Component {
                                component={Forms}/>
 
                         <div className="center">
-                            <button className={"btn blue pulse"}>Commit Changes</button>
+                            <button className={"btn blue pulse"}>
+                                <Modal/>
+                            </button>
                         </div>
                     </div>
                 </form>

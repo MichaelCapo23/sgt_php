@@ -2,7 +2,6 @@ import types from './types';
 import axios from 'axios';
 
 export const UpdateRecord_action = (values) => dispatch => {
-    debugger;
     try {
         axios({
             method: "POST",
