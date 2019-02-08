@@ -48,10 +48,11 @@
     z-index: 1;
 }
 
-.basic-modal-content h1 {
+.basic-modal-content h4 {
     border-bottom: 1px solid #dedede;
     margin-bottom: 20px;
     padding-bottom: 25px;
+    color: black;
 }
 
 .basic-modal-close {
@@ -73,10 +74,7 @@
     background-color: #dedede;
 }
 
-/*.modalBtn {*/
-    /*position: relative;*/
-    /*top: */
-/*}*/
+
 
 
 

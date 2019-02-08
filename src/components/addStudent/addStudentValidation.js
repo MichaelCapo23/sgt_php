@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import Forms from "../../helpers";
 import ErrorOnly from "../../helpers/errorOnly"
 import {Field, reduxForm} from 'redux-form';
+import AddModal from "./addModal"
 import './addStudent.css'
 
 class AddStudentValidation extends Component {
@@ -24,7 +25,6 @@ class AddStudentValidation extends Component {
         }
         const numberOfClasses = (indexCount - 5) / 2;
         console.log(numberOfClasses);
-        debugger;
         for(let index = 1; index <= 6; index++) {
             if(values[`class_${index}`]) {
                 classArray.push(values[`class_${index}`]);
@@ -62,7 +62,6 @@ class AddStudentValidation extends Component {
         console.log("studentInfo: ", studentInfo);
         console.log("classInfo: ", classInfo);
         const allInfo = studentInfo.concat(classInfo);
-        debugger;
         this.props.reducer(allInfo);
     };
 
@@ -197,7 +196,8 @@ class AddStudentValidation extends Component {
                             </div>
 
                             <div className="col s6 right">
-                                <button className={"blue pulse darken-2 btn waves-effect waves-light"}>Add Student
+                                <button className={"blue pulse darken-2 btn waves-effect waves-light"}>
+                                    <AddModal/>
                                 </button>
                                 <div className={"extra"}/>
                             </div>

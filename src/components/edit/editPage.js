@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux"
 import {UpdateRecord_action} from '../../actions/updateRecord_action';
 import Forms from "../../helpers";
-import Modal from '../../helpers/modal'
+import Modal from './modal'
 
 
 class EditPage extends Component {
