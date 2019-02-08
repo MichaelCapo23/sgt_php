@@ -76,6 +76,8 @@ class EditPage extends Component {
         console.log("studentInfo: ", studentInfo);
         console.log("classInfo: ", classInfo);
         const allInfo = studentInfo.concat(classInfo);
+        debugger;
+        allInfo.push(this.state.data['ID']);
         console.log("allInfo: ", allInfo);
         this.props.UpdateRecord_action(allInfo);
     };
