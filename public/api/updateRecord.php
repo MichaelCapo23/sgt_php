@@ -10,23 +10,35 @@ $jsonData = json_decode($postdata, true);
 $values = array_values($jsonData);
 
 $studentValues = array_splice($values[0], 0, 6);
+
+$value1 = $studentValues[0];
+$value2 = $studentValues[1];
+$value3 = $studentValues[2];
+$value4 = $studentValues[3];
+$value5 = $studentValues[4];
+$value6 = $studentValues[5];
+
+
+
 $studentKeys = array_splice($values[0], 0, 6);
+$key1 = $studentKeys[0];
+$key2 = $studentKeys[1];
+$key3 = $studentKeys[2];
+$key4 = $studentKeys[3];
+$key5 = $studentKeys[4];
+$key6 = $studentKeys[5];
 
-//print_r($studentValues);
-//print_r($studentKeys);
 
-
-function add_quotes($studentValues)
-{
-    return sprintf("'%s'", $studentValues);
-}
-$insertStudentKeys = implode(",", $studentKeys);
-$insertStudentValues = implode(',', array_map('add_quotes', $studentValues));
 
 $addStudentQuery = "UPDATE `students`
-                    SET ($insertStudentKeys)
-                    VALUES ($insertStudentValues)";
+                    SET $key1 = '$value1',
+                    $key2 = '$value2',
+                    $key3 = '$value3',
+                    $key4 = '$value4',
+                    $key5 = '$value5',
+                    $key6 = '$value6'";
 
+print_r($addStudentQuery);
 
 $result = mysqli_query($conn, $addStudentQuery);
 
@@ -37,33 +49,61 @@ if ($result) {
     $output['StudentError'] = "query failed";
 }
 
-$student_id = "student_id";
-
-
 $className = array_splice($values[0], 0, 6);
 $classGrades = array_splice($values[0], 0, 6);
 $classNumbers = array_splice($values[0], 0, 6);
 $classGradeNumbers = array_splice($values[0], 0, 6);
 
-print_r($className);
-echo '<br>';
-print_r($classGrades);
-echo '<br>';
-
 $tableKeys = array_merge($classNumbers, $classGradeNumbers);
+$key1 = $tableKeys[0];
+$key2 = $tableKeys[1];
+$key3 = $tableKeys[2];
+$key4 = $tableKeys[3];
+$key5 = $tableKeys[4];
+$key6 = $tableKeys[5];
+$key7 = $tableKeys[6];
+$key8 = $tableKeys[7];
+$key9 = $tableKeys[8];
+$key10 = $tableKeys[9];
+$key11 = $tableKeys[10];
+$key12 = $tableKeys[11];
+
 $tableValues = array_merge($className, $classGrades);
+$value1 = $tableValues[0];
+$value2 = $tableValues[1];
+$value3 = $tableValues[2];
+$value4 = $tableValues[3];
+$value5 = $tableValues[4];
+$value6 = $tableValues[5];
+$value7 = $tableValues[6];
+$value8 = $tableValues[7];
+$value9 = $tableValues[8];
+$value10 = $tableValues[9];
+$value11 = $tableValues[10];
+$value12 = $tableValues[11];
+$ID = $values[0];
 
-$insertClassKeys = implode(",", $tableKeys);
-function add_quote($gradeValues)
-{
-    return sprintf("'%s'", $gradeValues);
-}
+$student_id = implode($ID);
 
-$insertClassValues = implode(',', array_map('add_quote', $tableValues));
+echo "<br>";
+print_r($student_id);
+echo "<br>";
+
 
 $addClassesQuery = "UPDATE `student_classes`
-                    SET ($insertClassKeys)
-                    VALUES ($insertClassValues)";
+                    SET $key1 = '$value1',
+                    $key2 = '$value2',
+                    $key3 = '$value3',
+                    $key4 = '$value4',
+                    $key5 = '$value5',
+                    $key6 = '$value6',
+                    $key7 = '$value7',
+                    $key8 = '$value8',
+                    $key9 = '$value9',
+                    $key10 = '$value10',
+                    $key11 = '$value11',
+                    $key12 = '$value12'
+                    WHERE `student_id` = '$student_id'";
 
 print_r($addClassesQuery);
 
