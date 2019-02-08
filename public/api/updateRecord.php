@@ -9,6 +9,9 @@ $postdata = file_get_contents("php://input");
 $jsonData = json_decode($postdata, true);
 $values = array_values($jsonData);
 
+print_r($values);
+$ID = $values[0][36];
+
 $studentValues = array_splice($values[0], 0, 6);
 
 $value1 = $studentValues[0];
@@ -36,7 +39,8 @@ $addStudentQuery = "UPDATE `students`
                     $key3 = '$value3',
                     $key4 = '$value4',
                     $key5 = '$value5',
-                    $key6 = '$value6'";
+                    $key6 = '$value6'
+                    WHERE `ID` = '$ID'";
 
 print_r($addStudentQuery);
 
@@ -81,7 +85,7 @@ $value9 = $tableValues[8];
 $value10 = $tableValues[9];
 $value11 = $tableValues[10];
 $value12 = $tableValues[11];
-$ID = $values[0];
+
 
 $student_id = implode($ID);
 
@@ -103,7 +107,7 @@ $addClassesQuery = "UPDATE `student_classes`
                     $key10 = '$value10',
                     $key11 = '$value11',
                     $key12 = '$value12'
-                    WHERE `student_id` = '$student_id'";
+                    WHERE `student_id` = '$ID'";
 
 print_r($addClassesQuery);
 
