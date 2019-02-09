@@ -12,7 +12,6 @@ export const getTeacherStudents = (token) => dispatch => {
             }
         }).then((teachersList) => {
             console.log("teacherList: ", teachersList);
-            debugger;
             dispatch({
                 type : types.GET_TEACHER_LIST,
                 payload: teachersList.data.studentData,

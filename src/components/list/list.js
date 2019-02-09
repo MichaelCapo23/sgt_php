@@ -16,7 +16,6 @@ class List extends Component {
 
     getGPA(classData){
         console.log(classData);
-        debugger;
         const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade]
         let currentClassGrades = classArray.filter((index) => index != null && index != "null");
         let totalScore = 0;
