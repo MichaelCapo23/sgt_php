@@ -55,7 +55,7 @@ class EditRecords extends Component {
     getGPA(classData, index){
         console.log(classData);
         const classArray = [classData[index].class1_grade, classData[index].class2_grade, classData[index].class3_grade, classData[index].class4_grade, classData[index].class5_grade, classData[index].class6_grade]
-        let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
+        let currentClassGrades = classArray.filter((index) => !isNaN(index));
         let totalScore = 0;
         for (let index = 0; index < currentClassGrades.length; index++) {
             if (currentClassGrades[index] > 89.9) {
@@ -77,6 +77,7 @@ class EditRecords extends Component {
 
 
     handleStudentList = (teacher_list) => {
+        debugger;
         for (let student in teacher_list) {
             let name = teacher_list[student].name;
             let GPA = this.getGPA(teacher_list, student);

@@ -2,6 +2,7 @@ import types from '../actions/types'
 import axios from 'axios';
 
 export const getTeacherStudents = (token) => dispatch => {
+
     try {
         axios({
             method : "POST",
