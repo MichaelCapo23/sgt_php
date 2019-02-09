@@ -14,16 +14,40 @@ class List extends Component {
         await this.props.get_students_action(token);
     };
 
-    getGPA = (classData) => {
-        const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade,]
-        let currentClassGrades = classArray.filter((index) => index != null || index != undefined);
+    getGPA(classData){
+        console.log(classData);
+        debugger;
+        const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade]
+        let currentClassGrades = classArray.filter((index) => index != null && index != "null");
         let totalScore = 0;
-        for(let index = 0; index < currentClassGrades.length; index++) {
-            totalScore = totalScore += parseFloat(currentClassGrades[index]);
+        for (let index = 0; index < currentClassGrades.length; index++) {
+            if (currentClassGrades[index] > 89.9) {
+                totalScore += 4
+            } else if (currentClassGrades[index] > 79.9) {
+                totalScore += 3;
+            } else if (currentClassGrades[index] > 69.9) {
+                totalScore += 2;
+            } else if (currentClassGrades[index] > 59.9) {
+                totalScore += 1;
+            } else {
+                totalScore += 0;
+            }
         }
-        let average = totalScore / currentClassGrades.length;
-        return average.toFixed(2);
+        let gpa = totalScore / (currentClassGrades.length);
+        return gpa.toFixed(2);
     };
+
+    // getGPA = (classData) => {
+    //     debugger;
+    //     const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade,]
+    //     let currentClassGrades = classArray.filter((index) => !isNaN(index));
+    //     let totalScore = 0;
+    //     for(let index = 0; index < currentClassGrades.length; index++) {
+    //         totalScore = totalScore += parseFloat(currentClassGrades[index]);
+    //     }
+    //     let average = totalScore / currentClassGrades.length;
+    //     return average.toFixed(2);
+    // };
 
     handleStudentList = (studentList, classData) => {
         for(let student in studentList) {

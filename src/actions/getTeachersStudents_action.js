@@ -2,6 +2,7 @@ import types from '../actions/types'
 import axios from 'axios';
 
 export const getTeacherStudents = (token) => dispatch => {
+
     try {
         axios({
             method : "POST",
@@ -11,6 +12,7 @@ export const getTeacherStudents = (token) => dispatch => {
             }
         }).then((teachersList) => {
             console.log("teacherList: ", teachersList);
+            debugger;
             dispatch({
                 type : types.GET_TEACHER_LIST,
                 payload: teachersList.data.studentData,

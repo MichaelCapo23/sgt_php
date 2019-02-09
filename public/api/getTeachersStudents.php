@@ -46,6 +46,8 @@ $getStudentsQuery = "SELECT st.ID, st.student_number, st.name, st.age, st.year, 
                       left JOIN `students` AS st 
                       ON st.ID = s.student_id";
 
+//print_r($getStudentsQuery);
+
 $result = mysqli_query($conn, $getStudentsQuery);
 $data = [];
 $teacherList = [];
