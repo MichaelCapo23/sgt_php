@@ -254,13 +254,13 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
 
     if(Class1) {
         if (!classRegex.test(Class1)) {
-            error.Class2 = "Please enter a valid class"
+            error.Class1 = "Please enter a valid class"
         }
     }
 
     if(Class1_grade) {
         if(!gradeRegex.test(Class1_grade)) {
-            error.Class3_grade = "Please enter a valid grade, 1-100"
+            error.Class1_grade = "Please enter a valid grade, 1-100"
         }
     }
 
@@ -273,7 +273,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
 
     if(Class2_grade) {
         if(!gradeRegex.test(Class2_grade)) {
-            error.Class3_grade = "Please enter a valid grade, 1-100"
+            error.Class2_grade = "Please enter a valid grade, 1-100"
         }
     }
 
@@ -292,37 +292,37 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
 
     if(Class4) {
         if (!classRegex.test(Class4)) {
-            error.Class2 = "Please enter a valid class"
+            error.Class4 = "Please enter a valid class"
         }
     }
 
     if(Class4_grade) {
-        if(!gradeRegex.test(Class3_grade)) {
+        if(!gradeRegex.test(Class4_grade)) {
             error.Class4_grade = "Please enter a valid grade, 1-100"
         }
     }
 
     if(Class5) {
         if (!classRegex.test(Class5)) {
-            error.Class2 = "Please enter a valid class"
+            error.Class5 = "Please enter a valid class"
         }
     }
-
-    if(Class5_grade) {
+    
+    if(Class6_grade != "null" && Class6_grade != "") {
         if(!gradeRegex.test(Class5_grade)) {
-            error.Class3_grade = "Please enter a valid grade, 1-100"
+            error.Class5_grade = "Please enter a valid grade, 1-100"
         }
     }
 
     if(Class6) {
         if (!classRegex.test(Class6)) {
-            error.Class2 = "Please enter a valid class"
+            error.Class6 = "Please enter a valid class"
         }
     }
 
-    if(Class6_grade) {
+    if(Class6_grade != "null" && Class6_grade != "") {
         if(!gradeRegex.test(Class6_grade)) {
-            error.Class3_grade = "Please enter a valid grade, 1-100"
+            error.Class6_grade = "Please enter a valid grade, 1-100"
         }
     }
 

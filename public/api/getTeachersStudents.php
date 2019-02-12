@@ -22,8 +22,6 @@ $getIDQuery->store_result();
 $teacher_ID = null;
 $getIDQuery->bind_result($teacher_ID);
 
-//print_r($teacher_ID);
-
 $idResults = [];
 
 if($getIDQuery->num_rows>0){
