@@ -258,7 +258,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class1_grade) {
+    if(Class1_grade != "null" && Class1_grade != "") {
         if(!gradeRegex.test(Class1_grade)) {
             error.Class1_grade = "Please enter a valid grade, 1-100"
         }
@@ -271,7 +271,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
     }
 
 
-    if(Class2_grade) {
+    if(Class2_grade != "null" && Class2_grade != "") {
         if(!gradeRegex.test(Class2_grade)) {
             error.Class2_grade = "Please enter a valid grade, 1-100"
         }
@@ -283,7 +283,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class3_grade) {
+    if(Class3_grade != "null" && Class3_grade != "") {
         if(!gradeRegex.test(Class3_grade)) {
             error.Class3_grade = "Please enter a valid grade, 1-100"
         }
@@ -296,7 +296,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class4_grade) {
+    if(Class4_grade != "null" && Class4_grade != "") {
         if(!gradeRegex.test(Class4_grade)) {
             error.Class4_grade = "Please enter a valid grade, 1-100"
         }
@@ -307,7 +307,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
             error.Class5 = "Please enter a valid class"
         }
     }
-    
+
     if(Class6_grade != "null" && Class6_grade != "") {
         if(!gradeRegex.test(Class5_grade)) {
             error.Class5_grade = "Please enter a valid grade, 1-100"

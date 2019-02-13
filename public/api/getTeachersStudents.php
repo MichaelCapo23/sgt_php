@@ -34,15 +34,17 @@ if($getIDQuery->num_rows>0){
     exit();
 }
 
-$getStudentsQuery = "SELECT st.ID, st.student_number, st.name, st.age, st.year, st.GPA, st.tardy, st.absent,
-                      s.class1, s.class1_grade, s.class2, s.class2_grade, s.class3, s.class3_grade, s.class4, s.class4_grade, s.class5, s.class5_grade, s.class6, s.class6_grade
-                      FROM `student_classes` AS s
-                      JOIN `teachers` AS t
-                      ON (class1_teacher_id = 1) OR (class2_teacher_id = 1) 
-                      OR (class3_teacher_id = 1) OR (class4_teacher_id = 1) 
-                      OR (class5_teacher_id = 1) OR (class6_teacher_id = 1)
-                      left JOIN `students` AS st 
-                      ON st.ID = s.student_id";
+//print_r($teacher_ID);
+
+
+$getStudentsQuery = "SELECT s.ID, s.student_number, s.name, s.age, s.year, s.GPA, s.tardy, s.absent,
+                    sc.class1, sc.class1_grade, sc.class2, sc.class2_grade, sc.class3, sc.class3_grade, sc.class4, sc.class4_grade, sc.class5, sc.class5_grade, sc.class6, sc.class6_grade
+                    FROM `student_classes` AS sc
+                    JOIN `students` AS s ON s.ID = student_id
+                    WHERE (class1_teacher_id = $teacher_ID) OR (class2_teacher_id = $teacher_ID)
+                    OR (class3_teacher_id = $teacher_ID) OR (class4_teacher_id = $teacher_ID)
+                    OR (class5_teacher_id = $teacher_ID) OR (class6_teacher_id = $teacher_ID)";
+
 
 //print_r($getStudentsQuery);
 
