@@ -24,7 +24,6 @@ class AddStudentValidation extends Component {
             indexCount++;
         }
         const numberOfClasses = (indexCount - 5) / 2;
-        console.log(numberOfClasses);
         for(let index = 1; index <= 6; index++) {
             if(values[`class_${index}`]) {
                 classArray.push(values[`class_${index}`]);
@@ -106,6 +105,12 @@ class AddStudentValidation extends Component {
         this.setState({
             classes: false,
         })
+    };
+
+    componentDidMount(){
+        console.log('Select Ref:', this.select);
+
+        M.FormSelect.init(this.select);
     }
 
     render() {
@@ -125,12 +130,9 @@ class AddStudentValidation extends Component {
                                 <Field name={"name"} label={"Student's Full Name"} component={Forms}/>
                             </div>
 
-                            <div onClick={document.addEventListener('DOMContentLoaded', function () {
-                                var elems = document.querySelectorAll('select');
-                                var instances = M.FormSelect.init(elems);
-                            })} className="col s10 offset-s1">
+                            <div className="col s10 offset-s1">
                                 <div className="input-field col s12">
-                                    <select id={'dropMenu'}>
+                                    <select ref={e => this.select = e} id={'dropMenu'}>
                                         <option value="1st">1st</option>
                                         <option value="2nd">2nd</option>
                                         <option value="3rd">3rd</option>

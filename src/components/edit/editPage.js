@@ -97,76 +97,76 @@ class EditPage extends Component {
                 <form onSubmit={handleSubmit(this.gatherValues)}>
                     <h3 className={"center RightHeader row"}>{`Edit ${data.name}'s Record`}</h3>
                     <div className={"row"}>
-                        <Field placeholder={data.name} size={"s3 offset-s1"} type={"text"} name={"name"} label={"Name"}
+                        <Field classdiv={"editDiv"} placeholder={data.name} size={"s12 m3 l3 offset-s1"} type={"text"} name={"name"} label={"Name"}
                                component={Forms}/>
 
-                        <Field placeholder={data.student_number} size={"s3 offset-s1"} type={"text"}
+                        <Field classdiv={"editDiv"} placeholder={data.student_number} size={"s12 m3 l3 offset-s1"} type={"text"}
                                name={"student_number"}
                                label={"student Number"}
                                component={Forms}/>
 
-                        <Field placeholder={data.age} size={"s3 offset-s1"} type={"text"} name={"age"} label={"Age"}
+                        <Field classdiv={"editDiv"} placeholder={data.age} size={"s12 m3 l3 offset-s1"} type={"text"} name={"age"} label={"Age"}
                                component={Forms}/>
 
-                        <Field placeholder={data.year} size={"s3 offset-s1"} type={"text"} name={"year"} label={"Year"}
+                        <Field classdiv={"editDiv"} placeholder={data.year} size={"s12 m3 l3 offset-s1"} type={"text"} name={"year"} label={"Year"}
                                component={Forms}/>
 
-                        <Field placeholder={data.GPA} size={"s3 offset-s1"} type={"text"} name={"GPA"} label={"GPA"}
+                        <Field classdiv={"editDiv"} placeholder={data.GPA} size={"s12 m3 l3 offset-s1"} type={"text"} name={"GPA"} label={"GPA"}
                                component={Forms}/>
 
-                        <Field placeholder={data.tardy} size={"s3 offset-s1"} type={"text"} name={"tardy"}
+                        <Field classdiv={"editDiv"} placeholder={data.tardy} size={"s12 m3 l3 offset-s1"} type={"text"} name={"tardy"}
                                label={"tardy"}
                                component={Forms}/>
 
-                        <Field placeholder={data.absent} size={"s3 offset-s1"} type={"text"} name={"absent"}
+                        <Field classdiv={"editDiv"} placeholder={data.absent} size={"s12 m3 l3 offset-s1"} type={"text"} name={"absent"}
                                label={"absent"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class1} size={"s3 offset-s1"} type={"text"} name={"Class1"}
+                        <Field classdiv={"editDiv"} placeholder={data.class1} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class1"}
                                label={"Class #1"}
                                component={Forms}/>
 
-                        <Field placeholder={data.Class1_grade} size={"s3 offset-s1"} type={"text"} name={"Class1_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.Class1_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class1_grade"}
                                label={"Class #1 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class2} size={"s3 offset-s1"} type={"text"} name={"Class2"}
+                        <Field classdiv={"editDiv"} placeholder={data.class2} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class2"}
                                label={"Class #2"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class2_grade} size={"s3 offset-s1"} type={"text"} name={"Class2_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class2_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class2_grade"}
                                label={"Class #2 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class3} size={"s3 offset-s1"} type={"text"} name={"Class3"}
+                        <Field classdiv={"editDiv"} placeholder={data.class3} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class3"}
                                label={"Class #3"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class3_grade} size={"s3 offset-s1"} type={"text"} name={"Class3_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class3_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class3_grade"}
                                label={"Class #3 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class4} size={"s3 offset-s1"} type={"text"} name={"Class4"}
+                        <Field classdiv={"editDiv"} placeholder={data.class4} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class4"}
                                label={"Class #4"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class4_grade} size={"s3 offset-s1"} type={"text"} name={"Class4_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class4_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class4_grade"}
                                label={"Class #4 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class5} size={"s3 offset-s1"} type={"text"} name={"Class5"}
+                        <Field classdiv={"editDiv"} placeholder={data.class5} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class5"}
                                label={"Class #5"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class5_grade} size={"s3 offset-s1"} type={"text"} name={"Class5_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class5_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class5_grade"}
                                label={"Class #5 Grade"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class6} size={"s3 offset-s1"} type={"text"} name={"Class6"}
+                        <Field classdiv={"editDiv"} placeholder={data.class6} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class6"}
                                label={"Class #6"}
                                component={Forms}/>
 
-                        <Field placeholder={data.class6_grade} size={"s3 offset-s1"} type={"text"} name={"Class6_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class6_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class6_grade"}
                                label={"Class #6 Grade"}
                                component={Forms}/>
 
@@ -308,7 +308,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class6_grade != "null" && Class6_grade != "") {
+    if(Class5_grade != "null" && Class5_grade != "") {
         if(!gradeRegex.test(Class5_grade)) {
             error.Class5_grade = "Please enter a valid grade, 1-100"
         }
@@ -320,7 +320,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class6_grade != "null" && Class6_grade != "") {
+    if(Class6_grade != "null" && Class6_grade != "" && undefined) {
         if(!gradeRegex.test(Class6_grade)) {
             error.Class6_grade = "Please enter a valid grade, 1-100"
         }

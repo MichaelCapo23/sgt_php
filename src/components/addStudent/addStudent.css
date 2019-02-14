@@ -76,50 +76,32 @@
 
 
 
+.editDiv {
+    margin: 0px 0px 20px 0px !important;
+}
 
 
+.errorMessageText {
+    margin: 0;
+    height: 35px;
+    /*overflow: auto !important;*/
+}
 
-/*.errorMessageText {*/
-    /*margin: 0 !important;*/
-/*}*/
+@media only screen and (max-width: 700px) {
+    .errorMessageText {
+        font-size: 11px;
+        overflow: auto !important;
+    }
 
-/*div.input-field.col.s3 {*/
-    /*position: relative;*/
-    /*margin-bottom: 0 !important;*/
-    /**/
-/*}*/
+    .editDiv > input {
+        position: relative;
+        top: 7px;
+    }
+}
 
-/*div.input-field.col.s3:nth-child(4),*/
-/*div.input-field.col.s3:nth-child(5),*/
-/*div.input-field.col.s3:nth-child(6){*/
-    /*top: 40px;*/
-/*}*/
-
-/*div.input-field.col.s3:nth-child(7),*/
-/*div.input-field.col.s3:nth-child(8),*/
-/*div.input-field.col.s3:nth-child(9){*/
-    /*top: 80px;*/
-/*}*/
-
-/*div.input-field.col.s3:nth-child(10),*/
-/*div.input-field.col.s3:nth-child(11),*/
-/*div.input-field.col.s3:nth-child(12){*/
-    /*top: 120px;*/
-/*}*/
-
-/*div.input-field.col.s3:nth-child(13),*/
-/*div.input-field.col.s3:nth-child(14),*/
-/*div.input-field.col.s3:nth-child(15){*/
-    /*top: 160px;*/
-/*}*/
-
-/*div.input-field.col.s3:nth-child(16),*/
-/*div.input-field.col.s3:nth-child(17),*/
-/*div.input-field.col.s3:nth-child(18)*/
-/*{*/
-    /*top: 180px;*/
-/*}*/
-
-/*div.input-field.col.s3:nth-child(19) {*/
-    /*top: 240px;*/
+/*@media only screen and (max-width: 600px) {*/
+    /*.errorMessageText {*/
+        /*font-size: 13px;*/
+        /*overflow: auto !important;*/
+    /*}*/
 /*}*/
