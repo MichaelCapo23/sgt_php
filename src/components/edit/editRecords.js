@@ -77,7 +77,6 @@ class EditRecords extends Component {
 
 
     handleStudentList = (teacher_list) => {
-        debugger;
         for (let student in teacher_list) {
             let name = teacher_list[student].name;
             let GPA = this.getGPA(teacher_list, student);

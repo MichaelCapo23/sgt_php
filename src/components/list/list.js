@@ -11,13 +11,11 @@ class List extends Component {
     }
 
     componentDidMount = async () => {
-        debugger;
         let token = localStorage.getItem("token");
         await this.props.get_students_action(token);
     }
 
     getGPA(classData) {
-        debugger;
         console.log(classData);
         const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade]
         let currentClassGrades = classArray.filter((index) => index != null && index != "null");
@@ -40,7 +38,6 @@ class List extends Component {
     };
 
     handleStudentList = (studentList, classData) => {
-        debugger;
         for (let student in studentList) {
             let name = studentList[student].name;
             let GPA = this.getGPA(classData[student]);
@@ -62,7 +59,6 @@ class List extends Component {
     };
 
     componentDidUpdate = () => {
-        debugger;
         if (this.state.studentsLength == 0 || this.state.studentsLength != this.props.studentList.length) {
             this.handleStudentList(this.props.studentList, this.props.classData);
             this.setState({
@@ -72,7 +68,6 @@ class List extends Component {
     };
 
     makeListContainers = () => {
-        debugger;
         return (
             <table id={"tr-to-get"} className={"highlight collection z-depth-3 col s12 m12 l12 xl12"}>
                 <thead className="collection-item">
