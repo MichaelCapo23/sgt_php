@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from "react-router-dom"
 import {Link} from 'react-router-dom'
 import {signOutAction} from "../../actions/signOut_action";
 
@@ -91,9 +92,10 @@ class Nav extends Component {
 function mapStateToProps(state) {
     return {
         auth: state.signIn_reducer.auth,
+        token: localStorage.getItem("token")
     }
 }
 
 export default connect(mapStateToProps, {
     signOutAction,
-})(Nav);
+})(withRouter(Nav));
