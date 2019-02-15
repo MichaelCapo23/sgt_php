@@ -55,7 +55,7 @@ class EditRecords extends Component {
     getGPA(classData, index){
         console.log(classData);
         const classArray = [classData[index].class1_grade, classData[index].class2_grade, classData[index].class3_grade, classData[index].class4_grade, classData[index].class5_grade, classData[index].class6_grade]
-        let currentClassGrades = classArray.filter((index) => !isNaN(index));
+        let currentClassGrades = classArray.filter((index) => index != null && index != "null");
         let totalScore = 0;
         for (let index = 0; index < currentClassGrades.length; index++) {
             if (currentClassGrades[index] > 89.9) {
@@ -70,7 +70,7 @@ class EditRecords extends Component {
                 totalScore += 0;
             }
         }
-        let gpa = totalScore / currentClassGrades.length;
+        let gpa = totalScore / (currentClassGrades.length);
         this.props.teacher_list[index].GPA = gpa;
         return gpa.toFixed(2);
     };
