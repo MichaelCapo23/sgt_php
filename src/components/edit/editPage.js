@@ -191,6 +191,15 @@ function mapStateToProps({form}, {location}) {
     if (add_student_form && state && state.data) {
         const {data} = state;
 
+        for (let [key, value] of Object.entries(data)) {
+            if (value == "null" || value == "" || value == undefined || value == "N/A") {
+                value = "";
+                data[key] = value
+            }
+        }
+
+        console.log("data obj: ", data);
+
         initialValues = {
             name: data.name,
             student_number: data.student_number,
@@ -211,6 +220,8 @@ function mapStateToProps({form}, {location}) {
             Class5_grade: data.class5_grade,
             Class6: data.class6,
             Class6_grade: data.class6_grade,
+
+
 
         }
     }
@@ -258,7 +269,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class1_grade != "null" && Class6_grade != "" && undefined) {
+    if(Class1_grade != "null" && Class1_grade != "" && Class1_grade != undefined) {
         if(!gradeRegex.test(Class1_grade)) {
             error.Class1_grade = "Please enter a valid grade, 1-100"
         }
@@ -271,7 +282,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
     }
 
 
-    if(Class2_grade != "null" && Class6_grade != "" && undefined) {
+    if(Class2_grade != "null" && Class2_grade != "" && Class2_grade != undefined) {
         if(!gradeRegex.test(Class2_grade)) {
             error.Class2_grade = "Please enter a valid grade, 1-100"
         }
@@ -283,7 +294,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class3_grade != "null" && Class6_grade != "" && undefined) {
+    if(Class3_grade != "null" && Class3_grade != "" && Class3_grade != undefined) {
         if(!gradeRegex.test(Class3_grade)) {
             error.Class3_grade = "Please enter a valid grade, 1-100"
         }
@@ -296,7 +307,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class4_grade != "null" && Class6_grade != "" && undefined) {
+    if(Class4_grade != "null" && Class4_grade != "" && Class4_grade != undefined) {
         if(!gradeRegex.test(Class4_grade)) {
             error.Class4_grade = "Please enter a valid grade, 1-100"
         }
@@ -308,7 +319,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class5_grade != "null" && Class6_grade != "" && undefined) {
+    if(Class5_grade != "null" && Class5_grade != "" && Class5_grade != undefined) {
         if(!gradeRegex.test(Class5_grade)) {
             error.Class5_grade = "Please enter a valid grade, 1-100"
         }
@@ -320,7 +331,7 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         }
     }
 
-    if(Class6_grade != "null" && Class6_grade != "" && undefined) {
+    if(Class6_grade != "null" && Class6_grade != "" && Class6_grade != undefined) {
         if(!gradeRegex.test(Class6_grade)) {
             error.Class6_grade = "Please enter a valid grade, 1-100"
         }
