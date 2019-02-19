@@ -18,20 +18,20 @@ class AddStudentValidation extends Component {
         let classArray = [];
         let gradesArray = [];
         let classKeys = [];
-        let gradesKeys =[];
+        let gradesKeys = [];
         let indexCount = 0;
-        for(let index in values) {
+        for (let index in values) {
             indexCount++;
         }
         const numberOfClasses = (indexCount - 5) / 2;
-        for(let index = 1; index <= 6; index++) {
-            if(values[`class_${index}`]) {
+        for (let index = 1; index <= 6; index++) {
+            if (values[`class_${index}`]) {
                 classArray.push(values[`class_${index}`]);
             } else {
                 classArray.push('null');
             }
 
-            if(values[`grade_${index}`]) {
+            if (values[`grade_${index}`]) {
                 gradesArray.push(values[`grade_${index}`]);
             } else {
                 gradesArray.push('null');
@@ -107,13 +107,18 @@ class AddStudentValidation extends Component {
         })
     };
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('Select Ref:', this.select);
 
         M.FormSelect.init(this.select);
     }
 
+    clearInputs = () => {
+        this.props.clearFields()
+    }
+
     render() {
+        console.log("Proppsssss:", this.props)
         const {handleSubmit} = this.props;
         const {classes, rows} = this.state;
         return (
@@ -164,7 +169,7 @@ class AddStudentValidation extends Component {
 
                             <div className="col s12 left">
                                 <div className="col s6">
-                                    <button className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
+                                    <button type={"button"} onClick={this.props.reset} className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
                                 </div>
 
                                 <div className="col s6 right">
@@ -226,15 +231,15 @@ function validate({student_number, name, year, age, tardy, absent, class_1, grad
         error.age = "Please enter a valid 1-99"
     }
 
-    if(year) {
+    if (year) {
         error.year = "please enter a valid year"
     }
 
-    if(!tardy) {
+    if (!tardy) {
         error.tardy = "please enter a valid number 0-999"
     }
 
-    if(!absent) {
+    if (!absent) {
         error.absent = "please enter a valid number 0-999"
     }
 
