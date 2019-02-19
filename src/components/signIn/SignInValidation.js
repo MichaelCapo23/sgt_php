@@ -16,7 +16,7 @@ let SignInValidation = props => {
 
             <div className="row center">
                 <div className="col s6">
-                    <button className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
+                    <button type={"button"} onClick={props.reset} className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
                 </div>
 
                 <div className="col s6">

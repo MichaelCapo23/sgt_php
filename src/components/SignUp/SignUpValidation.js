@@ -17,16 +17,16 @@ const SignUpValidation = props => {
             </div>
 
             <div className="row">
-                <Field name={"Password"} label={"Password"} component={Forms}/>
+                <Field type={"password"} name={"Password"} label={"Password"} component={Forms}/>
             </div>
 
             <div className="row">
-                <Field name={"Confirm"} label={"re-enter Password"} component={Forms}/>
+                <Field type={"password"} name={"Confirm"} label={"re-enter Password"} component={Forms}/>
             </div>
 
             <div className="row center">
                 <div className="col s6">
-                    <button className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
+                    <button type={"button"} onClick={props.reset} className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
                 </div>
 
                 <div className="col s6">
