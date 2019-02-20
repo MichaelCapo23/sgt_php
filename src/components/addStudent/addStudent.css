@@ -1,0 +1,107 @@
+.extra {
+    height: 1vh;
+}
+
+.saveBTN {
+    position: relative;
+    top: 30px;
+}
+
+.leftSide {
+    border-right: black 1px solid;
+}
+
+.rightSide {
+    border-left: black 1px solid;
+}
+
+.input-field {
+    margin-bottom: 2rem !important;
+}
+
+.LeftHeader {
+    border-bottom: 2px solid black;
+}
+
+.RightHeader {
+    border-bottom: 2px solid black;
+}
+
+.basic-modal {
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+}
+
+.basic-modal-content {
+    background-color: white;
+    border-radius: 20px;
+    margin: auto;
+    padding: 25px;
+    position: relative;
+    width: 40%;
+    z-index: 1;
+}
+
+.basic-modal-content h4 {
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    color: black;
+}
+
+.basic-modal-close {
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #dedede;
+    cursor: pointer;
+}
+
+.basic-modal-close:hover {
+    color: #ff0000;
+    background-color: #dedede;
+}
+
+
+
+.editDiv {
+    margin: 0px 0px 20px 0px !important;
+}
+
+
+.errorMessageText {
+    margin: 0;
+    height: 35px;
+    /*overflow: auto !important;*/
+}
+
+@media only screen and (max-width: 700px) {
+    .errorMessageText {
+        font-size: 11px;
+        overflow: auto !important;
+    }
+
+    .editDiv > input {
+        position: relative;
+        top: 7px;
+    }
+}
+
+/*@media only screen and (max-width: 600px) {*/
+    /*.errorMessageText {*/
+        /*font-size: 13px;*/
+        /*overflow: auto !important;*/
+    /*}*/
+/*}*/

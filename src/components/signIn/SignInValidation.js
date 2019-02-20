@@ -1,11 +1,9 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import Forms from '../../helpers/forms'
 
 let SignInValidation = props => {
-    const {handleSubmit, submitFunction} = props;
+    const {handleSubmit, submitFunction, clearInputs} = props;
     return (
         <form onSubmit={handleSubmit(submitFunction)}>
             <div className={"row"}>
@@ -18,7 +16,7 @@ let SignInValidation = props => {
 
             <div className="row center">
                 <div className="col s6">
-                    <button className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
+                    <button type={"button"} onClick={props.reset} className={"red darken-2 btn waves-effect waves-light"}>Clear</button>
                 </div>
 
                 <div className="col s6">
@@ -43,5 +41,5 @@ function validate({email, password}) {
 
 export default reduxForm({
     form: 'sing-in-form',
-    validate: validate,
+    validate
 })(SignInValidation)

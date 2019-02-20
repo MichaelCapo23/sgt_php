@@ -1,14 +1,27 @@
 import React, {Component} from 'react';
-import {Field, Form} from 'redux-form'
+import {connect} from 'react-redux'
+import AddStudentValidation from "./addStudentValidation"
+import {addStudent_action} from "../../actions/addStudent_action"
+import './addStudent.css'
 
-class AddStudent extends  Component {
+class AddStudent extends Component {
+
     render() {
         return(
             <div>
-                <h1 className="center">Add Student</h1>
+                <h1 className="center">Add Students!</h1>
+                <AddStudentValidation reducer={this.props.addStudent_action}/>
             </div>
         )
     }
 }
 
-export default AddStudent
+function mapStateToProps(state) {
+    return{
+
+    }
+}
+
+export default connect(mapStateToProps, {
+    addStudent_action
+})(AddStudent);

@@ -1,5 +1,8 @@
 import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from "react-router-dom"
 import {Link} from 'react-router-dom'
+import {signOutAction} from "../../actions/signOut_action";
 
 
 class Nav extends Component {
@@ -15,10 +18,6 @@ class Nav extends Component {
                 text: "Add Student",
                 to: "/addStudent"
             },
-            // {
-            //     text: "Profile",
-            //     to: "/profile"
-            // },
             {
                 text: "Edit Records",
                 to: "/EditRecords"
@@ -31,7 +30,7 @@ class Nav extends Component {
             },
             {
                 text: "Sign Up",
-                to: "/singUp"
+                to: "/signUp"
             }
         ],
         links: '',
@@ -47,14 +46,19 @@ class Nav extends Component {
                 <Link to={link.to}>{link.text}</Link>
             </li>
         )
-    }
+    };
+
+    handleSignOut = () => {
+        this.props.signOutAction();
+    };
 
     getLinksInMenu = () => {
-        let auth = false;
+        console.log("auth: ", this.props.auth);
         const {common, Auth, noAuth} = this.state;
-        // const {auth} = this.props;     this will come from the redux state set by redux-form and made into a prop through mapStateToProps
+        const {auth} = this.props;
+        let token = localStorage.getItem("token");
         let links = [...common];
-        if(auth) {
+        if(auth || token) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
                 <li key={"sign-out"} className={"sign-out center"}>
@@ -64,7 +68,6 @@ class Nav extends Component {
         } else {
             links = [...common, ...noAuth].map(this.buildLinkForNav)
         }
-
         return links
     };
 
@@ -86,4 +89,13 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+function mapStateToProps(state) {
+    return {
+        auth: state.signIn_reducer.auth,
+        token: localStorage.getItem("token")
+    }
+}
+
+export default connect(mapStateToProps, {
+    signOutAction,
+})(withRouter(Nav));

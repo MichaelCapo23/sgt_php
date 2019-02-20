@@ -6,20 +6,23 @@ import 'material-icons';
 import {Route} from 'react-router-dom';
 import List from '../components/list/list'
 import Nav from '../components/nav'
-import SignIn from '../components/singIn/singIn'
+import SignIn from '../components/signIn/signIn'
 import SignUp from '../components/SignUp/signUp'
-import AddStudent from '../components/addStudent/addStudent';
-import EditRecords from '../components/edit/editRecords'
+import AddStudent from '../components/addStudent';
+import EditRecords from '../components/edit/editRecords';
+import EditPage from "../components/edit/editPage";
+import auth from './HOC/auth'
 
 const App = () => (
     <div>
         <Nav/>
-        <div className={"container"}>
+        <div className={"container row"}>
             <Route exact path={"/"} component={List}/>
             <Route path={"/signIn"} component={SignIn}/>
             <Route path={"/signUp"} component={SignUp}/>
-            <Route path={"/addStudent"} component={AddStudent}/>
-            <Route path={"/editRecords"} component={EditRecords}/>
+            <Route path={"/addStudent"} component={auth(AddStudent)}/>
+            <Route path={"/editRecords"} component={auth(EditRecords)}/>
+            <Route path={"/editPage/:bookID"} component={auth(EditPage)}/>
         </div>
     </div>
 );
