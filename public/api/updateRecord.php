@@ -102,8 +102,9 @@ $classResult = mysqli_query($conn, $addClassesQuery);
 
 if ($classResult) {
     $output['ClassSuccess'] = true;
+    $output['ClassFail'] = false;
 } else {
-    $output['Classerror'] = "query failed";
+    $output['ClassFail'] = true;
 }
 
 print_r(json_encode($output));

@@ -4,6 +4,8 @@ import {connect} from "react-redux"
 import {UpdateRecord_action} from '../../actions/updateRecord_action';
 import Forms from "../../helpers";
 import Modal from './modal'
+import updateRecord_reducer from "../../reducers/updateRecord_reducer";
+// import updateRecord_reducer from "../../reducers/updateRecord_reducer"
 
 
 class EditPage extends Component {
@@ -39,7 +41,7 @@ class EditPage extends Component {
         let classKeys = [];
         let gradesKeys = [];
         let indexCount = 0;
-        for (let index = 1; index <=6; index++) {
+        for (let index = 1; index <= 6; index++) {
             if (values[`Class${index}`]) {
                 classArray.push(values[`Class${index}`]);
             } else {
@@ -52,7 +54,7 @@ class EditPage extends Component {
                 gradesArray.push('null');
             }
         }
-        for(let indexCount = 1; indexCount <=6; indexCount++) {
+        for (let indexCount = 1; indexCount <= 6; indexCount++) {
             classKeys.push(`class${indexCount}`);
             gradesKeys.push(`class${indexCount}_grade`);
         }
@@ -80,6 +82,8 @@ class EditPage extends Component {
         allInfo.push(this.state.data['ID']);
         console.log("allInfo: ", allInfo);
         this.props.UpdateRecord_action(allInfo);
+        // this.errorEditDiv.innserHTML = this.props.location.editError;
+
     };
 
     componentDidMount = () => {
@@ -97,78 +101,99 @@ class EditPage extends Component {
                 <form onSubmit={handleSubmit(this.gatherValues)}>
                     <h3 className={"center RightHeader row"}>{`Edit ${data.name}'s Record`}</h3>
                     <div className={"row"}>
-                        <Field classdiv={"editDiv"} placeholder={data.name} size={"s12 m3 l3 offset-s1"} type={"text"} name={"name"} label={"Name"}
+                        <Field classdiv={"editDiv"} placeholder={data.name} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"name"} label={"Name"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.student_number} size={"s12 m3 l3 offset-s1"} type={"text"}
+                        <Field classdiv={"editDiv"} placeholder={data.student_number} size={"s12 m3 l3 offset-s1"}
+                               type={"text"}
                                name={"student_number"}
                                label={"student Number"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.age} size={"s12 m3 l3 offset-s1"} type={"text"} name={"age"} label={"Age"}
+                        <Field classdiv={"editDiv"} placeholder={data.age} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"age"} label={"Age"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.year} size={"s12 m3 l3 offset-s1"} type={"text"} name={"year"} label={"Year"}
+                        <Field classdiv={"editDiv"} placeholder={data.year} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"year"} label={"Year"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.GPA} size={"s12 m3 l3 offset-s1"} type={"text"} name={"GPA"} label={"GPA"}
+                        <Field classdiv={"editDiv"} placeholder={data.GPA} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"GPA"} label={"GPA"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.tardy} size={"s12 m3 l3 offset-s1"} type={"text"} name={"tardy"}
+                        <Field classdiv={"editDiv"} placeholder={data.tardy} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"tardy"}
                                label={"tardy"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.absent} size={"s12 m3 l3 offset-s1"} type={"text"} name={"absent"}
+                        <Field classdiv={"editDiv"} placeholder={data.absent} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"absent"}
                                label={"absent"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class1} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class1"}
+                        <Field classdiv={"editDiv"} placeholder={data.class1} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"Class1"}
                                label={"Class #1"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.Class1_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class1_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.Class1_grade} size={"s12 m3 l3 offset-s1"}
+                               type={"text"} name={"Class1_grade"}
                                label={"Class #1 Grade"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class2} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class2"}
+                        <Field classdiv={"editDiv"} placeholder={data.class2} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"Class2"}
                                label={"Class #2"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class2_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class2_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class2_grade} size={"s12 m3 l3 offset-s1"}
+                               type={"text"} name={"Class2_grade"}
                                label={"Class #2 Grade"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class3} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class3"}
+                        <Field classdiv={"editDiv"} placeholder={data.class3} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"Class3"}
                                label={"Class #3"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class3_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class3_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class3_grade} size={"s12 m3 l3 offset-s1"}
+                               type={"text"} name={"Class3_grade"}
                                label={"Class #3 Grade"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class4} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class4"}
+                        <Field classdiv={"editDiv"} placeholder={data.class4} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"Class4"}
                                label={"Class #4"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class4_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class4_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class4_grade} size={"s12 m3 l3 offset-s1"}
+                               type={"text"} name={"Class4_grade"}
                                label={"Class #4 Grade"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class5} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class5"}
+                        <Field classdiv={"editDiv"} placeholder={data.class5} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"Class5"}
                                label={"Class #5"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class5_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class5_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class5_grade} size={"s12 m3 l3 offset-s1"}
+                               type={"text"} name={"Class5_grade"}
                                label={"Class #5 Grade"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class6} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class6"}
+                        <Field classdiv={"editDiv"} placeholder={data.class6} size={"s12 m3 l3 offset-s1"} type={"text"}
+                               name={"Class6"}
                                label={"Class #6"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class6_grade} size={"s12 m3 l3 offset-s1"} type={"text"} name={"Class6_grade"}
+                        <Field classdiv={"editDiv"} placeholder={data.class6_grade} size={"s12 m3 l3 offset-s1"}
+                               type={"text"} name={"Class6_grade"}
                                label={"Class #6 Grade"}
                                component={Forms}/>
+
+                        <div ref={e => this.errorEditDiv = e} className={"errorEdit hide"}></div>
 
                         <div className="center">
                             <button className={"btn blue pulse"}>
@@ -184,6 +209,7 @@ class EditPage extends Component {
 
 
 function mapStateToProps({form}, {location}) {
+    console.log(location);
     let initialValues = {};
     const {add_student_form} = form;
     const {state} = location;
@@ -222,12 +248,13 @@ function mapStateToProps({form}, {location}) {
             Class6_grade: data.class6_grade,
 
 
-
         }
     }
 
     return {
-        initialValues
+        initialValues,
+        // editError: state.updateRecord_reducer.errorMessage
+        // classData: state.get_student_reducer.classData
     }
 }
 
@@ -263,76 +290,76 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
         error.absent = "please enter a valid number 0-999"
     }
 
-    if(Class1) {
+    if (Class1) {
         if (!classRegex.test(Class1)) {
             error.Class1 = "Please enter a valid class"
         }
     }
 
-    if(Class1_grade != "null" && Class1_grade != "" && Class1_grade != undefined) {
-        if(!gradeRegex.test(Class1_grade)) {
+    if (Class1_grade != "null" && Class1_grade != "" && Class1_grade != undefined) {
+        if (!gradeRegex.test(Class1_grade)) {
             error.Class1_grade = "Please enter a valid grade, 1-100"
         }
     }
 
-    if(Class2) {
+    if (Class2) {
         if (!classRegex.test(Class2)) {
             error.Class2 = "Please enter a valid class"
         }
     }
 
 
-    if(Class2_grade != "null" && Class2_grade != "" && Class2_grade != undefined) {
-        if(!gradeRegex.test(Class2_grade)) {
+    if (Class2_grade != "null" && Class2_grade != "" && Class2_grade != undefined) {
+        if (!gradeRegex.test(Class2_grade)) {
             error.Class2_grade = "Please enter a valid grade, 1-100"
         }
     }
 
-    if(Class3) {
+    if (Class3) {
         if (!classRegex.test(Class2)) {
             error.Class3 = "Please enter a valid class"
         }
     }
 
-    if(Class3_grade != "null" && Class3_grade != "" && Class3_grade != undefined) {
-        if(!gradeRegex.test(Class3_grade)) {
+    if (Class3_grade != "null" && Class3_grade != "" && Class3_grade != undefined) {
+        if (!gradeRegex.test(Class3_grade)) {
             error.Class3_grade = "Please enter a valid grade, 1-100"
         }
     }
 
 
-    if(Class4) {
+    if (Class4) {
         if (!classRegex.test(Class4)) {
             error.Class4 = "Please enter a valid class"
         }
     }
 
-    if(Class4_grade != "null" && Class4_grade != "" && Class4_grade != undefined) {
-        if(!gradeRegex.test(Class4_grade)) {
+    if (Class4_grade != "null" && Class4_grade != "" && Class4_grade != undefined) {
+        if (!gradeRegex.test(Class4_grade)) {
             error.Class4_grade = "Please enter a valid grade, 1-100"
         }
     }
 
-    if(Class5) {
+    if (Class5) {
         if (!classRegex.test(Class5)) {
             error.Class5 = "Please enter a valid class"
         }
     }
 
-    if(Class5_grade != "null" && Class5_grade != "" && Class5_grade != undefined) {
-        if(!gradeRegex.test(Class5_grade)) {
+    if (Class5_grade != "null" && Class5_grade != "" && Class5_grade != undefined) {
+        if (!gradeRegex.test(Class5_grade)) {
             error.Class5_grade = "Please enter a valid grade, 1-100"
         }
     }
 
-    if(Class6) {
+    if (Class6) {
         if (!classRegex.test(Class6)) {
             error.Class6 = "Please enter a valid class"
         }
     }
 
-    if(Class6_grade != "null" && Class6_grade != "" && Class6_grade != undefined) {
-        if(!gradeRegex.test(Class6_grade)) {
+    if (Class6_grade != "null" && Class6_grade != "" && Class6_grade != undefined) {
+        if (!gradeRegex.test(Class6_grade)) {
             error.Class6_grade = "Please enter a valid grade, 1-100"
         }
     }
