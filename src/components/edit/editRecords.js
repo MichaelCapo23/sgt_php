@@ -22,6 +22,7 @@ class EditRecords extends Component {
             state: {
                 id: ID,
                 data: teacher_list[indexNumber],
+                editError: this.props.editError
             }
         });
 
@@ -136,7 +137,8 @@ class EditRecords extends Component {
 
 function mapStateToProps(state) {
     return {
-        teacher_list: state.getTeacherList_reducer.teacher_list
+        teacher_list: state.getTeacherList_reducer.teacher_list,
+        editError: state.updateRecord_reducer.errorMessage
     }
 }
 

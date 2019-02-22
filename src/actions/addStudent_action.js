@@ -2,6 +2,7 @@ import types from './types';
 import axios from 'axios';
 
 export const addStudent_action = (values) => dispatch => {
+    debugger;
     try {
         console.log("parameters: ", values);
         console.log("reducer");
@@ -14,13 +15,21 @@ export const addStudent_action = (values) => dispatch => {
         }).then((studentRecords) => {
             dispatch({
                 type: types.ADD_STUDENT,
-                payload: studentRecords.data
+                payload: studentRecords.data,
+                message: false
             })
         })
     } catch {
         dispatch({
             type: types.ADD_STUDENT_ERROR,
-            error: "Unable to add student record"
+            payload: "Unable to add student record",
+            message: "Unable to add student record"
         })
     }
+    debugger;
+    dispatch({
+        type: types.ADD_STUDENT,
+        payload: "Unable to add student record",
+        message: "Unable to add student record"
+    })
 };

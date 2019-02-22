@@ -9,7 +9,7 @@ export default (state = DEFAULT_STATE, action) => {
         case types.UPDATE_RECORD:
             return {...state, message: action.message};
         case types.UPDATE_RECORD_ERROR:
-            return {...state, message: action.message};
+            return {...state, Message: DEFAULT_STATE.message};
         default:
             return state
     }

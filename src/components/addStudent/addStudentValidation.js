@@ -47,6 +47,7 @@ class AddStudentValidation extends Component {
     };
 
     callAction = (values) => {
+        this.spinner.classList.remove("hide");
         console.log("values: ", values);
         let e = document.getElementById("dropMenu");
         let year = e.options[e.selectedIndex].value;
@@ -62,6 +63,7 @@ class AddStudentValidation extends Component {
         console.log("classInfo: ", classInfo);
         const allInfo = studentInfo.concat(classInfo);
         this.props.reducer(allInfo);
+        this.spinner.classList.add("hide");
     };
 
     ClassRows = (event) => {
@@ -115,7 +117,7 @@ class AddStudentValidation extends Component {
 
     clearInputs = () => {
         this.props.clearFields()
-    }
+    };
 
     render() {
         console.log("Proppsssss:", this.props)
@@ -123,6 +125,7 @@ class AddStudentValidation extends Component {
         const {classes, rows} = this.state;
         return (
             <Fragment>
+                <div ref={e => this.spinner = e} className="fa fa-circle-o-notch fa-spin hide"></div>
                 <div className="firstInputContainer row center">
                     <form onSubmit={handleSubmit(this.nextStep)}>
                         <div className={`${classes ? "hide" : ""} z-depth-4 Info col s12 center`}>
