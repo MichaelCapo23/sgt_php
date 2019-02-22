@@ -19,6 +19,14 @@
     margin-bottom: 2rem !important;
 }
 
+.fa-spin{
+    position: absolute;
+    left: 41%;
+    top: 41%;
+    z-index: 2;
+    font-size:112px
+}
+
 .LeftHeader {
     border-bottom: 2px solid black;
 }

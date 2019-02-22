@@ -21,7 +21,6 @@ class ButtonModal extends Component {
     };
 
     render() {
-
         if (this.state.isOpen) {
             debugger;
             return (
