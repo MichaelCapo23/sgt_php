@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Field, Form} from 'redux-form';
 import {connect} from "react-redux"
+import {Link} from "react-router-dom"
 import SignInValidation from './SignInValidation'
 import {signInAction} from "../../actions/signIn_action";
 
@@ -47,6 +48,7 @@ class SignIn extends Component {
                 <h1 className="center">Sign In</h1>
                 <div className={"center red-text"}>{this.state.error ? this.state.error : ""}</div>
                 <SignInValidation submitFunction={this.handleSubmit}/>
+                <p className="col center-align l12 m12 s12 grey-text signin_footer">Dont have an account? <Link className='yellow-text text-darken-2' to={"/SignUp"}>Sign up now! </Link> </p>
             </div>
         )
     }
