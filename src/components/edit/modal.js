@@ -21,7 +21,6 @@ class ButtonModal extends Component {
     };
 
     render() {
-        debugger;
         if (this.state.isOpen) {
             return (
                 <div className="basic-modal" onClick={this.close}>
