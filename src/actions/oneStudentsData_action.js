@@ -14,7 +14,6 @@ export const oneStudentsData_action = (token) => dispatch => {
                 type : types.GET_ONE_STUNDETS_DATA,
                 record: record
             })
-
         })
     } catch {
         dispatch({

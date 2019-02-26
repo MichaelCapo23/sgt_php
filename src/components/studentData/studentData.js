@@ -12,7 +12,11 @@ class StudentData extends Component {
     }
 
     componentDidMount = async () => {
-        this.props.oneStudentsData_action();
+        let pathName = window.location.pathname;
+        console.log(pathName);
+        let slashAndID = pathName.slice(pathName.lastIndexOf("/"), pathName.length);
+        let ID = slashAndID.slice(1, slashAndID.length);
+        this.props.oneStudentsData_action(ID);
     };
 
     // routeUser = (event) => {

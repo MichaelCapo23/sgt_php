@@ -1,7 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MichaelCapo23
- * Date: 2/25/2019
- * Time: 7:53 PM
- */
+
+$jsonData = file_get_contents("php://input");
+$postData = json_decode($jsonData);
+
+?>
