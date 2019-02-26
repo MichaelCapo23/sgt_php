@@ -9,7 +9,7 @@ const SignUpValidation = props => {
     return (
         <form onSubmit={handleSubmit(submitFunction)}>
             <div className="row">
-                <Field name={"username"} label={"username"} component={Forms}/>
+                <Field name={"username"} label={"Username"} component={Forms}/>
             </div>
 
             <div className={"row"}>
@@ -39,21 +39,20 @@ const SignUpValidation = props => {
 
 function validate({username, Email, Password, Confirm}){
     let errors = {};
-    //changes these with regex later!
     if(!username) {
-        errors.username = "invalid user name"
+        errors.username = "Invalid Username"
     }
 
     if(!Email) {
-        errors.Email = "invalid email address"
+        errors.Email = "Invalid Email Address"
     }
 
     if(!Password) {
-        errors.Password = "Must have at least eight characters, one capital letter, and a number"
+        errors.Password = "Must Have At Least Eight Characters, One Capital Letter, And A Number"
     }
 
     if(!Confirm) {
-        errors.Confirm = "must match the password above"
+        errors.Confirm = "Must Match The Password Above"
     }
     return errors;
 }

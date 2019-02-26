@@ -5,6 +5,7 @@ import get_student_reducer from './get_student_reducer';
 import addStudent_reducer from './addStudent_reducer';
 import getTeacherList_reducer from './getTeacherList_reducer';
 import updateRecord_reducer from './updateRecord_reducer';
+import oneStudentsData_reducer from "./oneStudentsData_reducer"
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     addStudent_reducer,
     getTeacherList_reducer,
     updateRecord_reducer,
+    oneStudentsData_reducer,
 });
 
 export default rootReducer;

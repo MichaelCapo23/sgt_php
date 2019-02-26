@@ -34,7 +34,7 @@ class SignIn extends Component {
                 auth: this.props.auth
             })
         }
-        if(token) { //might have to change this if it doesnt work consistently
+        if(token) {
             this.props.history.push("/");
         }
     };

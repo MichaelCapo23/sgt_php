@@ -82,8 +82,6 @@ class EditPage extends Component {
         allInfo.push(this.state.data['ID']);
         console.log("allInfo: ", allInfo);
         this.props.UpdateRecord_action(allInfo);
-        // this.errorEditDiv.innserHTML = this.props.location.editError;
-
     };
 
     componentDidMount = () => {
@@ -252,9 +250,7 @@ function mapStateToProps({form}, {location}) {
     }
 
     return {
-        initialValues,
-        // editError: state.updateRecord_reducer.errorMessage
-        // classData: state.get_student_reducer.classData
+        initialValues
     }
 }
 
@@ -267,100 +263,100 @@ function validate({student_number, name, year, age, tardy, absent, Class1, Class
     const student_numberRegex = /^\d{1,10}$/;
 
     if (!student_numberRegex.test(student_number)) {
-        error.student_id = "Please enter a valid email"
+        error.student_id = "Please Enter A Valid Email"
     }
 
     if (!nameRegex.test(name)) {
-        error.name = "Please enter a valid name, at least 4 characters"
+        error.name = "Please Enter A Valid Name, At Least 4 Characters"
     }
 
     if (!attendanceRegex.test(age)) {
-        error.age = "Please enter a valid 1-99"
+        error.age = "Please Enter A Valid Number, 1-99"
     }
 
     if (!year) {
-        error.year = "please enter a valid year"
+        error.year = "Please Enter A Valid Year"
     }
 
     if (!attendanceRegex.test(tardy)) {
-        error.tardy = "please enter a valid number 0-999"
+        error.tardy = "Please Enter A Valid Number, 0-999"
     }
 
     if (!attendanceRegex.test(absent)) {
-        error.absent = "please enter a valid number 0-999"
+        error.absent = "Please Enter A Valid Number, 0-999"
     }
 
     if (Class1) {
         if (!classRegex.test(Class1)) {
-            error.Class1 = "Please enter a valid class"
+            error.Class1 = "Please Enter A Valid Class"
         }
     }
 
     if (Class1_grade != "null" && Class1_grade != "" && Class1_grade != undefined) {
         if (!gradeRegex.test(Class1_grade)) {
-            error.Class1_grade = "Please enter a valid grade, 1-100"
+            error.Class1_grade = "Please Enter A Valid Grade, 1-100"
         }
     }
 
     if (Class2) {
         if (!classRegex.test(Class2)) {
-            error.Class2 = "Please enter a valid class"
+            error.Class2 = "Please Enter A Valid Class"
         }
     }
 
 
     if (Class2_grade != "null" && Class2_grade != "" && Class2_grade != undefined) {
         if (!gradeRegex.test(Class2_grade)) {
-            error.Class2_grade = "Please enter a valid grade, 1-100"
+            error.Class2_grade = "Please Enter A Valid Grade, 1-100"
         }
     }
 
     if (Class3) {
         if (!classRegex.test(Class2)) {
-            error.Class3 = "Please enter a valid class"
+            error.Class3 = "Please Enter A Valid Class"
         }
     }
 
     if (Class3_grade != "null" && Class3_grade != "" && Class3_grade != undefined) {
         if (!gradeRegex.test(Class3_grade)) {
-            error.Class3_grade = "Please enter a valid grade, 1-100"
+            error.Class3_grade = "Please Enter A Valid Grade, 1-100"
         }
     }
 
 
     if (Class4) {
         if (!classRegex.test(Class4)) {
-            error.Class4 = "Please enter a valid class"
+            error.Class4 = "Please Enter A Valid Class"
         }
     }
 
     if (Class4_grade != "null" && Class4_grade != "" && Class4_grade != undefined) {
         if (!gradeRegex.test(Class4_grade)) {
-            error.Class4_grade = "Please enter a valid grade, 1-100"
+            error.Class4_grade = "Please Enter A Valid Grade, 1-100"
         }
     }
 
     if (Class5) {
         if (!classRegex.test(Class5)) {
-            error.Class5 = "Please enter a valid class"
+            error.Class5 = "Please Enter A Valid Class"
         }
     }
 
     if (Class5_grade != "null" && Class5_grade != "" && Class5_grade != undefined) {
         if (!gradeRegex.test(Class5_grade)) {
-            error.Class5_grade = "Please enter a valid grade, 1-100"
+            error.Class5_grade = "Please Enter A Valid Grade, 1-100"
         }
     }
 
     if (Class6) {
         if (!classRegex.test(Class6)) {
-            error.Class6 = "Please enter a valid class"
+            error.Class6 = "Please Enter A Valid Class"
         }
     }
 
     if (Class6_grade != "null" && Class6_grade != "" && Class6_grade != undefined) {
         if (!gradeRegex.test(Class6_grade)) {
-            error.Class6_grade = "Please enter a valid grade, 1-100"
+            error.Class6_grade = "Please Enter A Valid Grade, 1-100"
         }
     }
 

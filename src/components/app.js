@@ -11,6 +11,7 @@ import SignUp from '../components/SignUp/signUp'
 import AddStudent from '../components/addStudent';
 import EditRecords from '../components/edit/editRecords';
 import EditPage from "../components/edit/editPage";
+import studentData from "./studentData/studentData"
 import auth from './HOC/auth'
 
 const App = () => (
@@ -18,11 +19,12 @@ const App = () => (
         <Nav/>
         <div className={"container row"}>
             <Route exact path={"/"} component={List}/>
+            <Route path={"/studentData/:studentsID"} component={studentData}/>
             <Route path={"/signIn"} component={SignIn}/>
             <Route path={"/signUp"} component={SignUp}/>
             <Route path={"/addStudent"} component={auth(AddStudent)}/>
             <Route path={"/editRecords"} component={auth(EditRecords)}/>
-            <Route path={"/editPage/:bookID"} component={auth(EditPage)}/>
+            <Route path={"/editPage/:studentID"} component={auth(EditPage)}/>
         </div>
     </div>
 );
