@@ -7,11 +7,11 @@ let SignInValidation = props => {
     return (
         <form onSubmit={handleSubmit(submitFunction)}>
             <div className={"row"}>
-                <Field name={"email"} label={"email"} component={Forms}/>
+                <Field name={"email"} label={"Email"} component={Forms}/>
             </div>
 
             <div className="row">
-                <Field name={"password"} label={"password"} type={"password"} component={Forms}/>
+                <Field name={"password"} label={"Password"} type={"password"} component={Forms}/>
             </div>
 
             <div className="row center">
@@ -30,11 +30,11 @@ let SignInValidation = props => {
 function validate({email, password}) {
     const error = {};
     if (!email) {
-        error.email = "Please enter a valid email"
+        error.email = "Please Enter A Valid Email"
     }
 
     if (!password) {
-        error.password = "Please enter a valid password"
+        error.password = "Please Enter A Valid Password"
     }
     return error;
 }

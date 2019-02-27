@@ -4,13 +4,9 @@ import {Link} from "react-router-dom"
 import SignUpValidation from './SignUpValidation'
 
 class SignUp extends Component {
-    componentDidMount = () => {
-        // localStorage.setItem("token", this.props.token)
-    };
 
     handleSubmit = (values) => {
         console.log("values: ", values);
-        //call the redux action creator for signing in here
     };
 
     render() {

@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from "react";
 import {connect} from 'react-redux'
+import {withRouter} from "react-router-dom"
 import {get_students_action} from '../../actions/get_students_action';
 
 class List extends Component {
@@ -13,12 +14,24 @@ class List extends Component {
     componentDidMount = async () => {
         let token = localStorage.getItem("token");
         await this.props.get_students_action(token);
-    }
+    };
+
+    showClasses = (e) => {
+        // debugger;
+        const ID = e.target.parentElement.id;
+        console.log("list student id: ", ID);
+        this.props.history.push({
+            pathname: `/studentData/${ID}`,
+        })
+    };
 
     getGPA(classData) {
         console.log(classData);
         const classArray = [classData.class1_grade, classData.class2_grade, classData.class3_grade, classData.class4_grade, classData.class5_grade, classData.class6_grade]
         let currentClassGrades = classArray.filter((index) => index != null && index != "null");
+        if(currentClassGrades.length < 1) {
+            return "N/A"
+        }
         let totalScore = 0;
         for (let index = 0; index < currentClassGrades.length; index++) {
             if (currentClassGrades[index] > 89.9) {
@@ -109,4 +122,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     get_students_action,
-})(List);
+})(withRouter(List));

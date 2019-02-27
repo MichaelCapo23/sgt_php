@@ -77,12 +77,18 @@
     cursor: pointer;
 }
 
+.block {
+    display: block;
+}
+
 .basic-modal-close:hover {
     color: #ff0000;
     background-color: #dedede;
 }
 
-
+.colorDark::placeholder {
+    color: black;
+}
 
 .editDiv {
     margin: 0px 0px 20px 0px !important;
@@ -92,7 +98,6 @@
 .errorMessageText {
     margin: 0;
     height: 35px;
-    /*overflow: auto !important;*/
 }
 
 @media only screen and (max-width: 700px) {
@@ -107,9 +112,3 @@
     }
 }
 
-/*@media only screen and (max-width: 600px) {*/
-    /*.errorMessageText {*/
-        /*font-size: 13px;*/
-        /*overflow: auto !important;*/
-    /*}*/
-/*}*/
