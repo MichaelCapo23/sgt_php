@@ -105,7 +105,7 @@ class EditRecords extends Component {
         const table = this.makeListContainers();
         return (
             <Fragment>
-                <h2 className="center">Your students</h2>
+                <h2 className="center">Your Students</h2>
                 <div className={"row"}>
                     {table}
                 </div>

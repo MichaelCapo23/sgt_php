@@ -1,5 +1,4 @@
 import React from 'react';
-debugger;
 export default ({disabled="", inputClass="", value="", classdiv="", input, active="active", placeholder="" ,min = "", max = "", key = "12", type = "text", size = "s12", label, meta: {touched, error}}) => (
     <div  key={key} className={`${classdiv} input-field col ${size}`}>
         <input disabled={`${disabled}`} className={`${inputClass}`} value={value} placeholder={placeholder} min={min} max={max} key={key} autoComplete={"off"} {...input} id={input.name} type={type} />

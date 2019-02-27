@@ -94,6 +94,17 @@
     margin: 0px 0px 20px 0px !important;
 }
 
+.returnBTN {
+    clear: both;
+}
+
+.class1 {
+    clear: both;
+}
+
+/*.commitBTN {*/
+    /*clear: both;*/
+/*}*/
 
 .errorMessageText {
     margin: 0;

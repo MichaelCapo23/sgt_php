@@ -131,7 +131,7 @@ class EditPage extends Component {
                                label={"absent"}
                                component={Forms}/>
 
-                        <Field classdiv={"editDiv"} placeholder={data.class1} size={"s12 m3 l3 offset-s1"} type={"text"}
+                        <Field classdiv={"class1 editDiv"} placeholder={data.class1} size={"s12 m3 l3 offset-s1"} type={"text"}
                                name={"Class1"}
                                label={"Class #1"}
                                component={Forms}/>
@@ -193,7 +193,7 @@ class EditPage extends Component {
 
                         <div ref={e => this.errorEditDiv = e} className={"errorEdit hide"}></div>
 
-                        <div className="center">
+                        <div className="class1 center">
                             <button className={"btn blue pulse"}>
                                 <Modal/>
                             </button>
@@ -229,7 +229,7 @@ function mapStateToProps({form}, {location}) {
             student_number: data.student_number,
             age: data.age,
             year: data.year,
-            GPA: data.GPA,
+            GPA: data.GPA.toFixed(2),
             tardy: data.tardy,
             absent: data.absent,
             Class1: data.class1,
