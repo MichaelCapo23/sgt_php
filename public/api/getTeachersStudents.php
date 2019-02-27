@@ -61,7 +61,6 @@ $getStudentsQuery = "SELECT s.ID, s.student_number, s.name, s.age, s.year, s.GPA
                     OR (class3 IN ('$class1', '$class2', '$class3')) OR (class4 IN ('$class1', '$class2', '$class3'))
                     OR (class5 IN ('$class1', '$class2', '$class3')) OR (class6 IN ('$class1', '$class2', '$class3'))";
 
-
 //print_r($getStudentsQuery);
 
 $result = mysqli_query($conn, $getStudentsQuery);

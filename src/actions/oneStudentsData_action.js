@@ -1,4 +1,4 @@
-import "axios";
+import axios from 'axios';
 import types from '../actions/types'
 
 export const oneStudentsData_action = (token) => dispatch => {
@@ -12,7 +12,7 @@ export const oneStudentsData_action = (token) => dispatch => {
         }).then((record) => {
             dispatch({
                 type : types.GET_ONE_STUNDETS_DATA,
-                record: record
+                record: record.data.studentData[0]
             })
         })
     } catch {

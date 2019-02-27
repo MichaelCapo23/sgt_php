@@ -83,7 +83,7 @@ class AddStudentValidation extends Component {
                     <Field key={`classInput${index}`} name={`class_${index}`} label={`Enter Class #${index}`} component={Forms}/>
                 </div>
                 <div key={`grade${index}`} className="col s10 offset-s1">
-                    <Field key={`gradeInput${index}`} name={`grade_${index}`} label={`Enter Grade #${index}`} component={Forms}/>
+                    <Field key={`gradeInput${index}`} name={`grade_${index}`} label={`Enter Class #${index} Grade`} component={Forms}/>
                 </div>
             </Fragment>
         );
