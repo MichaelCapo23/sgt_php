@@ -239,11 +239,11 @@ function validate({student_number, name, year, age, tardy, absent, class_1, grad
     }
 
     if (!tardy) {
-        error.tardy = "please Enter A Valid Number 0-999"
+        error.tardy = "Please Enter A Valid Number 0-999"
     }
 
     if (!absent) {
-        error.absent = "please Enter A Valid Number 0-999"
+        error.absent = "Please Enter A Valid Number 0-999"
     }
 
     if (!class_1) {
