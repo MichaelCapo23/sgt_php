@@ -47,6 +47,7 @@ class AddStudentValidation extends Component {
     };
 
     callAction = (values) => {
+        this.spinner.classList.remove("hide");
         console.log("values: ", values);
         let e = document.getElementById("dropMenu");
         let year = e.options[e.selectedIndex].value;
@@ -62,6 +63,7 @@ class AddStudentValidation extends Component {
         console.log("classInfo: ", classInfo);
         const allInfo = studentInfo.concat(classInfo);
         this.props.reducer(allInfo);
+        this.spinner.classList.add("hide");
     };
 
     ClassRows = (event) => {
@@ -78,10 +80,10 @@ class AddStudentValidation extends Component {
         let newClass = (
             <Fragment>
                 <div key={`class${index}`} className="col s10 offset-s1">
-                    <Field key={`classInput${index}`} name={`class_${index}`} label={"enter class"} component={Forms}/>
+                    <Field key={`classInput${index}`} name={`class_${index}`} label={`Enter Class #${index}`} component={Forms}/>
                 </div>
                 <div key={`grade${index}`} className="col s10 offset-s1">
-                    <Field key={`gradeInput${index}`} name={`grade_${index}`} label={"enter grade"} component={Forms}/>
+                    <Field key={`gradeInput${index}`} name={`grade_${index}`} label={`Enter Class #${index} Grade`} component={Forms}/>
                 </div>
             </Fragment>
         );
@@ -115,7 +117,7 @@ class AddStudentValidation extends Component {
 
     clearInputs = () => {
         this.props.clearFields()
-    }
+    };
 
     render() {
         console.log("Proppsssss:", this.props)
@@ -123,12 +125,13 @@ class AddStudentValidation extends Component {
         const {classes, rows} = this.state;
         return (
             <Fragment>
+                <div ref={e => this.spinner = e} className="fa fa-circle-o-notch fa-spin hide"></div>
                 <div className="firstInputContainer row center">
                     <form onSubmit={handleSubmit(this.nextStep)}>
                         <div className={`${classes ? "hide" : ""} z-depth-4 Info col s12 center`}>
                             <h5 className="center">Student Information</h5>
                             <div className="col s10 offset-s1">
-                                <Field name={"student_number"} label={"Student number"} component={Forms}/>
+                                <Field name={"student_number"} label={"Student Number"} component={Forms}/>
                             </div>
 
                             <div className="col s10 offset-s1">
@@ -147,23 +150,23 @@ class AddStudentValidation extends Component {
                                         <option value="7th">7th</option>
                                         <option value="8th">8th</option>
                                     </select>
-                                    <label>year</label>
+                                    <label>Year</label>
                                 </div>
                                 <Field name={"year"} component={ErrorOnly}/>
                             </div>
 
                             <div className="col s10 offset-s1">
-                                <Field min={"1"} max={"99"} type={"number"} name={"age"} label={"age"}
+                                <Field min={"1"} max={"99"} type={"number"} name={"age"} label={"Age"}
                                        component={Forms}/>
                             </div>
 
                             <div className="col s10 offset-s1">
-                                <Field min={"0"} max={"999"} type={"number"} name={"tardy"} label={"tardy"}
+                                <Field min={"0"} max={"999"} type={"number"} name={"tardy"} label={"Tardy"}
                                        component={Forms}/>
                             </div>
 
                             <div className="col s10 offset-s1">
-                                <Field min={"0"} max={"999"} type={"number"} name={"absent"} label={"absent"}
+                                <Field min={"0"} max={"999"} type={"number"} name={"absent"} label={"Absent"}
                                        component={Forms}/>
                             </div>
 
@@ -220,75 +223,75 @@ function validate({student_number, name, year, age, tardy, absent, class_1, grad
     const error = {};
 
     if (!student_number) {
-        error.student_id = "Please enter a valid email"
+        error.student_number = "Please Enter A Valid Email"
     }
 
     if (!name) {
-        error.name = "Please enter a valid name, at least 4 characters"
+        error.name = "Please Enter A Valid Name, At Least 4 Characters"
     }
 
     if (!age) {
-        error.age = "Please enter a valid 1-99"
+        error.age = "Please Enter A Valid Number 1-99"
     }
 
     if (year) {
-        error.year = "please enter a valid year"
+        error.year = "please Enter A Valid Year"
     }
 
     if (!tardy) {
-        error.tardy = "please enter a valid number 0-999"
+        error.tardy = "please Enter A Valid Number 0-999"
     }
 
     if (!absent) {
-        error.absent = "please enter a valid number 0-999"
+        error.absent = "please Enter A Valid Number 0-999"
     }
 
     if (!class_1) {
-        error.class_1 = "Please enter a valid class"
+        error.class_1 = "Please Enter A Valid Class"
     }
 
     if (!grade_1) {
-        error.grade_1 = "Please enter a valid grade, 1-100"
+        error.grade_1 = "Please Enter A Valid Grade, 1-100"
     }
 
     if (!class_2) {
-        error.class_2 = "Please enter a valid class"
+        error.class_2 = "Please Enter A Valid Class"
     }
 
     if (!grade_2) {
-        error.grade_2 = "Please enter a valid grade, 1-100"
+        error.grade_2 = "Please Enter A Valid Grade, 1-100"
     }
 
     if (!class_3) {
-        error.class_3 = "Please enter a valid class"
+        error.class_3 = "Please Enter A Valid Class"
     }
 
     if (!grade_3) {
-        error.grade_3 = "Please enter a valid grade, 1-100"
+        error.grade_3 = "Please Enter A Valid Grade, 1-100"
     }
 
     if (!class_4) {
-        error.class_4 = "Please enter a valid class"
+        error.class_4 = "Please Enter A Valid Class"
     }
 
     if (!grade_4) {
-        error.grade_4 = "Please enter a valid grade, 1-100"
+        error.grade_4 = "Please Enter A Valid Grade, 1-100"
     }
 
     if (!class_5) {
-        error.class_5 = "Please enter a valid class"
+        error.class_5 = "Please Enter A Valid Class"
     }
 
     if (!grade_5) {
-        error.grade_5 = "Please enter a valid grade, 1-100"
+        error.grade_5 = "Please Enter A Valid Grade, 1-100"
     }
 
     if (!class_6) {
-        error.class_6 = "Please enter a valid class"
+        error.class_6 = "Please Enter A Valid Class"
     }
 
     if (!grade_6) {
-        error.grade_6 = "Please enter a valid grade, 1-100"
+        error.grade_6 = "Please Enter A Valid Grade, 1-100"
     }
     return (
         error

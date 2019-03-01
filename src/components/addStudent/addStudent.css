@@ -1,5 +1,5 @@
 .extra {
-    height: 1vh;
+    height: 2.5vh;
 }
 
 .saveBTN {
@@ -17,6 +17,14 @@
 
 .input-field {
     margin-bottom: 2rem !important;
+}
+
+.fa-spin{
+    position: absolute;
+    left: 41%;
+    top: 41%;
+    z-index: 2;
+    font-size:112px
 }
 
 .LeftHeader {
@@ -69,22 +77,38 @@
     cursor: pointer;
 }
 
+.block {
+    display: block;
+}
+
 .basic-modal-close:hover {
     color: #ff0000;
     background-color: #dedede;
 }
 
-
+.colorDark::placeholder {
+    color: black;
+}
 
 .editDiv {
     margin: 0px 0px 20px 0px !important;
 }
 
+.returnBTN {
+    clear: both;
+}
+
+.class1 {
+    clear: both;
+}
+
+/*.commitBTN {*/
+    /*clear: both;*/
+/*}*/
 
 .errorMessageText {
     margin: 0;
     height: 35px;
-    /*overflow: auto !important;*/
 }
 
 @media only screen and (max-width: 700px) {
@@ -99,9 +123,3 @@
     }
 }
 
-/*@media only screen and (max-width: 600px) {*/
-    /*.errorMessageText {*/
-        /*font-size: 13px;*/
-        /*overflow: auto !important;*/
-    /*}*/
-/*}*/

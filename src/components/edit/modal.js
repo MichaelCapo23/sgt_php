@@ -21,12 +21,12 @@ class ButtonModal extends Component {
     };
 
     render() {
-        if (this.state.isOpen && this.props.updateConfirmation.ClassSuccess) {
+        if (this.state.isOpen) {
             return (
                 <div className="basic-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                         <div onClick={this.close} className="row basic-modal-close">X</div>
-                        <h4>Student Record Updated!</h4>
+                        <h4>{this.props.updateConfirmation == "Unable to update record" ? this.props.updateConfirmation : "Student Record Updated!"}</h4>
                         <div className="col s12 left">
                             <div className="col s6">
                                 <button onClick={this.pushHome}
@@ -46,6 +46,8 @@ class ButtonModal extends Component {
             )
         }
 
+
+
         return (
             <div onClick={this.open}>Commit Changes</div>
         );
@@ -54,7 +56,8 @@ class ButtonModal extends Component {
 
 function mapStateToProps(state) {
     return {
-        updateConfirmation: state.updateRecord_reducer.message
+        updateConfirmation: state.updateRecord_reducer.message,
+        editError: state.updateRecord_reducer.errorMessage
     }
 }
 

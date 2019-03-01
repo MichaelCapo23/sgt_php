@@ -22,28 +22,9 @@ class EditRecords extends Component {
             state: {
                 id: ID,
                 data: teacher_list[indexNumber],
+                editError: this.props.editError
             }
         });
-
-        // let ID = event.target.parentElement.attributes.ID.value;
-        // let row = document.getElementById(`${ID}`).children;
-        // console.log(row);
-        // for (let index = 0; index < row.length; index++) {
-        //     console.log(row);
-        //     const value = row[3].textContent;
-        //     console.log(value);
-        //     row[3].remove();
-        //     let td = document.createElement("td");
-        //     td.append(document.createElement("input"));
-        //     document.getElementById(`${ID}`).prepend(td);
-        //     row[0].value = value;
-        //     row[0].childNodes.value = value;
-        // }
-        // let button = document.createElement("button");
-        // button.innerHTML = "save";
-        // button.classList.add("btn");
-        // button.classList.add("saveBTN");
-        // document.getElementById(`${ID}`).append(button);
     };
 
 
@@ -104,7 +85,6 @@ class EditRecords extends Component {
     makeListContainers = () => {
         return (
             <table id={"tr-to-get"} className={"highlight collection z-depth-3 col s12 m12 l12 xl12"}>
-                {/*<caption></caption>*/}
                 <thead className="collection-item">
                 <tr>
                     <th>Name</th>
@@ -125,7 +105,7 @@ class EditRecords extends Component {
         const table = this.makeListContainers();
         return (
             <Fragment>
-                <h2 className="center">Your students</h2>
+                <h2 className="center">Your Students</h2>
                 <div className={"row"}>
                     {table}
                 </div>
@@ -136,7 +116,8 @@ class EditRecords extends Component {
 
 function mapStateToProps(state) {
     return {
-        teacher_list: state.getTeacherList_reducer.teacher_list
+        teacher_list: state.getTeacherList_reducer.teacher_list,
+        editError: state.updateRecord_reducer.errorMessage
     }
 }
 

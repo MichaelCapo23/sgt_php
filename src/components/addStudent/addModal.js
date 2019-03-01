@@ -21,13 +21,12 @@ class ButtonModal extends Component {
     };
 
     render() {
-
-        if (this.state.isOpen && this.props.confirmation) {
+        if (this.state.isOpen) {
             return (
                 <div className="basic-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                         <div onClick={this.close} className="row basic-modal-close">X</div>
-                        <h4>Student Successfully Added</h4>
+                        <h4>{this.props.confirmation ? this.props.confirmation : "Student Added!"}</h4>
                         <div className="col s12 left">
                             <div className="col s6">
                                 <button onClick={this.pushHome}
@@ -55,7 +54,7 @@ class ButtonModal extends Component {
 
 function mapStateToProps(state) {
     return {
-        confirmation: state.addStudent_reducer.studentAdded
+        confirmation: state.addStudent_reducer.error,
     }
 }
 

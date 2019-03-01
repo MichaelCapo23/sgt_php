@@ -11,4 +11,6 @@ export default {
     GET_TEACHER_LIST_ERROR : "get_teacher_list_error",
     UPDATE_RECORD: "update_record",
     UPDATE_RECORD_ERROR: "update_record_error",
+    GET_ONE_STUNDETS_DATA: "get_one_stundets_data",
+    GET_ONE_STUNDETS_DATA_ERROR: "get_one_stundets_data_error"
 }

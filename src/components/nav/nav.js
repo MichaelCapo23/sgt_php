@@ -13,7 +13,7 @@ class Nav extends Component {
                 to: "/"
             },
         ],
-        Auth : [
+        Auth: [
             {
                 text: "Add Student",
                 to: "/addStudent"
@@ -23,10 +23,10 @@ class Nav extends Component {
                 to: "/EditRecords"
             }
         ],
-        noAuth : [
+        noAuth: [
             {
                 text: "Sign In",
-                to : "/signIn"
+                to: "/signIn"
             },
             {
                 text: "Sign Up",
@@ -40,9 +40,13 @@ class Nav extends Component {
         M.Sidenav.init(this.navRef);
     }
 
+    closeNav = () => {
+        M.Sidenav.init(this.navRef).close();
+    }
+
     buildLinkForNav = (link) => {
         return (
-            <li key={link.to}>
+            <li onClick={this.closeNav} key={link.to}>
                 <Link to={link.to}>{link.text}</Link>
             </li>
         )
@@ -58,7 +62,7 @@ class Nav extends Component {
         const {auth} = this.props;
         let token = localStorage.getItem("token");
         let links = [...common];
-        if(auth || token) {
+        if (auth || token) {
             links = [...common, ...Auth].map(this.buildLinkForNav);
             links.push(
                 <li key={"sign-out"} className={"sign-out center"}>
@@ -72,7 +76,6 @@ class Nav extends Component {
     };
 
     render() {
-
         const links = this.getLinksInMenu();
         return (
             <Fragment>
@@ -80,7 +83,9 @@ class Nav extends Component {
                     <a href={"#"} data-target="side-nav" className={"sidenav-trigger show-on-large"}>
                         <i className={'material-icons'}>menu</i>
                     </a>
-                    <ul ref={(element) => {this.navRef = element }} id={"side-nav"} className={"sidenav"}>
+                    <ul ref={(element) => {
+                        this.navRef = element
+                    }} id={"side-nav"} className={"sidenav"}>
                         {links}
                     </ul>
                 </nav>

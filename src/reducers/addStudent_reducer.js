@@ -7,7 +7,7 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case types.ADD_STUDENT:
-            return {...state, studentAdded: true, studentInfo: action.payload};
+            return {...state, studentAdded: true, studentInfo: action.payload, error: action.message};
         case types.ADD_STUDENT_ERROR:
             return {...state, studentAdded: false, error: action.error};
         default:
