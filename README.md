@@ -1,6 +1,8 @@
 # sgt_php
 
-> This repo contains boilerplate code to aid in the creation of a new React app with Redux. Follow the below setup instructions to get started.
+> this app utilizes Reactjs with Redux, PHP, MySQL and the Materialize CSS Library to deliver a functional
+ student grade table that allows users to sign in and edit their own students information allow as view
+ other teachers students classes and meta information as well as add new students to the database.
 
 ### Setup Instructions
 
@@ -20,4 +22,3 @@
 > 1. Run webpack to bundle files
 >    - `npm run bundle`
 > 
-> **NOTE:** *After bundling you can not directly run your app locally. You must run your app from the root directory of a server.*
