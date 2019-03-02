@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import Forms from '../../helpers/forms'
 
 let SignInValidation = props => {
-    const {handleSubmit, submitFunction, clearInputs} = props;
+    const {handleSubmit, submitFunction} = props;
     return (
         <form onSubmit={handleSubmit(submitFunction)}>
             <div className={"row"}>
